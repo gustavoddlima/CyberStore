@@ -11,10 +11,10 @@
         /* Variáveis CSS */
         :root {
             --primary-color: #8A2BE2; /* Azul Violeta (Roxo) */
-            --secondary-color: #FFFFFF; /* Branco */
-            --background-dark: #000000; /* Preto */
-            --text-light: #FFFFFF; /* Branco */
-            --text-dark: #000000; /* Preto */
+            --secondary-color: #000000; /* Preto para texto em fundo branco */
+            --background-light: #FFFFFF; /* Branco */
+            --text-light: #000000; /* Preto para texto em fundo branco */
+            --text-dark: #FFFFFF; /* Branco para texto em fundos escuros/primários */
             --gradient-start: #8A2BE2; /* Roxo */
             --gradient-end: #BA55D3; /* Roxo Médio Orchid */
             --border-radius: 8px;
@@ -30,8 +30,8 @@
 
         body {
             font-family: 'Oxanium', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-light);
+            background-color: var(--background-light); /* Alterado para branco */
+            color: var(--text-light); /* Alterado para preto */
             line-height: 1.6;
             overflow-x: hidden; /* Evita scroll horizontal */
         }
@@ -71,7 +71,7 @@
 
         .btn-primary {
             background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-            color: var(--text-light);
+            color: var(--text-dark); /* Alterado para branco */
             border: none;
         }
 
@@ -88,7 +88,7 @@
 
         .btn-secondary:hover {
             background-color: var(--primary-color);
-            color: var(--background-dark);
+            color: var(--text-dark); /* Alterado para branco */
             box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3); /* Sombra roxa */
         }
 
@@ -96,6 +96,7 @@
             margin-bottom: 20px;
             font-weight: 700;
             text-align: center;
+            color: var(--secondary-color); /* Alterado para preto */
         }
 
         h2 {
@@ -114,13 +115,14 @@
 
         /* Header */
         header {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
             box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
         }
 
         header .container {
@@ -150,7 +152,7 @@
         }
 
         .nav-list a {
-            color: var(--text-light);
+            color: var(--secondary-color); /* Alterado para preto */
             font-weight: bold;
             font-size: 1.1em;
             position: relative;
@@ -191,8 +193,8 @@
 
         /* Hero Banner */
         .hero-banner {
-            background: url('http://googleusercontent.com/image_generation_content/1') no-repeat center center/cover; /* Imagem com roxo e tecnologia */
-            color: var(--text-light);
+            background: url('imagens/fundo.png') no-repeat center center/cover; /* Imagem com roxo e tecnologia */
+            color: var(--text-dark); /* Alterado para branco */
             text-align: center;
             padding: 100px 0;
             display: flex;
@@ -222,45 +224,37 @@
             font-size: 3.5em;
             margin-bottom: 20px;
             text-shadow: 0 0 15px rgba(138, 43, 226, 0.7); /* Sombra roxa */
+            color: var(--text-dark); /* Certifica-se que o H1 no banner é branco */
         }
 
         .hero-banner p {
             font-size: 1.4em;
             margin-bottom: 40px;
             opacity: 0.9;
+            color: var(--text-dark); /* Certifica-se que o P no banner é branco */
         }
 
-        /* Carrossel de Destaques */
-        .highlight-carousel {
-            background-color: var(--background-dark);
+        /* Destaques da Semana (Grid Estático) */
+        .highlight-grid-section { /* Novo nome para a seção */
+            background-color: var(--background-light); /* Fundo branco */
             padding: 80px 0;
         }
 
-        .carousel-wrapper {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 20px;
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .carousel-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome, Safari */
+            justify-items: center; /* Centraliza os itens na grid */
         }
 
         .product-card {
-            flex: 0 0 auto;
-            width: 280px; /* Largura fixa para os cards no carrossel */
-            background-color: #1a1a1a; /* Preto mais suave para o card */
+            background-color: #f8f8f8; /* Branco mais suave para o card */
             border-radius: var(--border-radius);
             overflow: hidden;
             text-align: center;
             padding: 20px;
             box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1); /* Sombra roxa */
             transition: transform var(--transition-speed) ease;
-            scroll-snap-align: start;
         }
 
         .product-card:hover {
@@ -288,32 +282,9 @@
             width: 100%;
         }
 
-        .carousel-nav {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .carousel-btn {
-            background-color: var(--primary-color);
-            color: var(--background-dark);
-            border: none;
-            padding: 10px 15px;
-            font-size: 1.5em;
-            cursor: pointer;
-            border-radius: 50%;
-            margin: 0 10px;
-            transition: background-color var(--transition-speed), transform var(--transition-speed);
-        }
-
-        .carousel-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--background-dark); /* Texto preto no hover branco */
-            transform: scale(1.1);
-        }
-
         /* Banners de Promoção */
         .promotion-banners {
-            background-color: var(--background-dark);
+            background-color: var(--background-light); /* Fundo branco */
             padding: 80px 0;
             text-align: center;
         }
@@ -326,7 +297,7 @@
         }
 
         .promo-item {
-            background-color: #1a1a1a; /* Preto mais suave para o card */
+            background-color: #f8f8f8; /* Branco mais suave para o card */
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1); /* Sombra roxa */
@@ -367,7 +338,7 @@
 
         /* Página de Produtos (simulada na mesma página via JS) */
         .product-categories {
-            background-color: #000;
+            background-color: var(--background-light); /* Fundo branco */
             padding: 30px 0;
             text-align: center;
             border-bottom: 1px solid rgba(138, 43, 226, 0.1); /* Borda roxa */
@@ -385,7 +356,7 @@
         }
 
         .category-btn {
-            background-color: #1a1a1a;
+            background-color: #f0f0f0; /* Cinza claro para o botão */
             color: var(--primary-color);
             border: 1px solid var(--primary-color);
             padding: 10px 20px;
@@ -400,13 +371,14 @@
 
         .category-btn:hover, .category-btn.active {
             background-color: var(--primary-color);
-            color: var(--background-dark);
+            color: var(--text-dark); /* Alterado para branco */
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.5); /* Sombra roxa */
             transform: translateY(-2px); /* Pequeno efeito de elevação */
         }
 
         .product-grid-section {
             padding: 60px 0;
+            background-color: var(--background-light); /* Fundo branco */
         }
 
         .product-grid {
@@ -423,17 +395,18 @@
 
         /* Página de Contato (simulada na mesma página via JS) */
         .contact-form-section {
-            background-color: #000;
+            background-color: var(--background-light); /* Fundo branco */
             padding: 80px 0;
             text-align: center;
         }
 
         .contact-form-section h2 {
             margin-bottom: 40px;
+            color: var(--secondary-color); /* Alterado para preto */
         }
 
         .contact-form {
-            background-color: #1a1a1a;
+            background-color: #f8f8f8; /* Branco mais suave */
             padding: 40px;
             border-radius: var(--border-radius);
             max-width: 600px;
@@ -459,8 +432,8 @@
             padding: 12px;
             border: 1px solid var(--primary-color);
             border-radius: 5px;
-            background-color: #2a2a2a; /* Preto mais escuro para input */
-            color: var(--text-light);
+            background-color: #ffffff; /* Fundo branco para input */
+            color: var(--secondary-color); /* Texto preto para input */
             font-size: 1em;
             transition: border-color var(--transition-speed);
         }
@@ -468,12 +441,12 @@
         .form-group input[type="text"]:focus,
         .form-group input[type="email"]:focus {
             outline: none;
-            border-color: var(--secondary-color);
+            border-color: var(--primary-color); /* Roxo no focus */
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); /* Sombra roxa */
         }
 
         .form-group input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(0, 0, 0, 0.6); /* Placeholder mais escuro */
         }
 
         .checkbox-group {
@@ -492,7 +465,7 @@
 
         .checkbox-group label {
             font-size: 0.95em;
-            color: var(--text-light);
+            color: var(--secondary-color); /* Alterado para preto */
         }
 
         .contact-form button {
@@ -514,8 +487,8 @@
 
         /* Footer */
         footer {
-            background-color: #000;
-            color: rgba(255, 255, 255, 0.7);
+            background-color: #f0f0f0; /* Cinza claro para o footer */
+            color: rgba(0, 0, 0, 0.7); /* Texto cinza escuro */
             text-align: center;
             padding: 30px 0;
             border-top: 1px solid rgba(138, 43, 226, 0.1); /* Borda roxa */
@@ -528,7 +501,7 @@
 
         .hidden-db-link {
             cursor: pointer;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(0, 0, 0, 0.5); /* Mais escuro */
             font-size: 0.8em;
             display: block;
             margin-top: 10px;
@@ -542,7 +515,7 @@
         #db-page {
             display: none; /* Oculto por padrão */
             padding: 60px 0;
-            background-color: #000000;
+            background-color: var(--background-light); /* Fundo branco */
             min-height: 100vh;
         }
 
@@ -556,7 +529,7 @@
         }
 
         #db-table-container {
-            background-color: #1a1a1a;
+            background-color: #f8f8f8; /* Branco mais suave */
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
@@ -571,24 +544,24 @@
 
         #db-table th, #db-table td {
             padding: 12px 15px;
-            border: 1px solid #2a2a2a; /* Borda mais escura para tabela */
+            border: 1px solid #e0e0e0; /* Borda cinza claro para tabela */
             text-align: left;
-            color: var(--text-light);
+            color: var(--secondary-color); /* Texto preto */
         }
 
         #db-table th {
             background-color: var(--primary-color);
-            color: var(--background-dark);
+            color: var(--text-dark); /* Branco */
             font-weight: bold;
             text-transform: uppercase;
         }
 
         #db-table tr:nth-child(even) {
-            background-color: #1a1a1a; /* Fundo mais suave para linhas pares */
+            background-color: #f0f0f0; /* Fundo cinza suave para linhas pares */
         }
 
         #db-table tr:hover {
-            background-color: #2a2a2a;
+            background-color: #e8e8e8; /* Cinza um pouco mais escuro no hover */
         }
 
         #db-error-message {
@@ -611,7 +584,7 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
+                background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
                 position: absolute;
                 top: 80px; /* Ajuste conforme a altura do header */
                 left: 0;
@@ -632,16 +605,15 @@
                 display: block;
             }
 
-            .carousel-wrapper {
-                justify-content: flex-start;
+            /* No longer a carousel, so these styles are less critical but kept for card display */
+            .highlight-grid {
+                grid-template-columns: 1fr; /* Uma coluna em mobile */
             }
 
             .product-card {
-                flex-shrink: 0; /* Garante que os cards não encolham */
                 width: 90%; /* Ajuste a largura para ocupar a maior parte da tela mobile */
                 max-width: 300px; /* Limite máximo */
                 margin: 0 auto; /* Centraliza */
-                scroll-snap-align: center; /* Centraliza o card no scroll */
             }
 
             .product-grid {
@@ -727,10 +699,10 @@
             </div>
         </section>
 
-        <section class="highlight-carousel">
+        <section class="highlight-grid-section">
             <div class="container">
                 <h2>Destaques da Semana</h2>
-                <div class="carousel-wrapper">
+                <div class="highlight-grid">
                     <div class="product-card">
                         <img src="https://m.media-amazon.com/images/I/71+2o31QvBL._AC_SX679_.jpg" alt="Fone de Ouvido Bluetooth JBL Wave Buds">
                         <h3>Fone de Ouvido Bluetooth JBL Wave Buds</h3>
@@ -757,10 +729,6 @@
                         <a href="https://amzn.to/3V7N3x7" target="_blank" class="btn-secondary">Ver na Amazon</a>
                     </div>
                 </div>
-                <div class="carousel-nav">
-                    <button class="carousel-btn prev">&#10094;</button>
-                    <button class="carousel-btn next">&#10095;</button>
-                </div>
             </div>
         </section>
 
@@ -769,13 +737,13 @@
                 <h2>Promoções Relâmpago</h2>
                 <div class="banner-grid">
                     <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x200/000000/8A2BE2?text=Promoção+Fones" alt="Promoção de Fones de Ouvido">
+                        <img src="https://via.placeholder.com/400x200/FFFFFF/8A2BE2?text=Promoção+Fones" alt="Promoção de Fones de Ouvido">
                         <p>Fones de Ouvido com até 30% OFF!</p>
                         <span class="countdown">Termina em: <span id="countdown1">24h 00m 00s</span></span>
                         <a href="LINK_AFILIADO_AMAZON_PROMO1" target="_blank" class="btn-secondary">Aproveitar</a>
                     </div>
                     <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x200/000000/BA55D3?text=Smartwatches+em+Oferta" alt="Smartwatches em Oferta">
+                        <img src="https://via.placeholder.com/400x200/FFFFFF/BA55D3?text=Smartwatches+em+Oferta" alt="Smartwatches em Oferta">
                         <p>Smartwatches com Descontos Exclusivos!</p>
                         <span class="countdown">Termina em: <span id="countdown2">12h 30m 00s</span></span>
                         <a href="LINK_AFILIADO_AMAZON_PROMO2" target="_blank" class="btn-secondary">Confira</a>
@@ -802,10 +770,10 @@
         <section class="product-grid-section">
             <div class="container">
                 <div class="product-grid" id="productGrid">
-                    </div>
+                </div>
             </div>
         </section>
-
+        
         <section id="contato-section" class="contact-form-section">
             <div class="container">
                 <h2>Receba Ofertas Exclusivas</h2>
@@ -852,7 +820,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
             <button class="btn-primary" onclick="history.back()" style="margin-top: 30px;">Voltar</button>
@@ -879,36 +847,6 @@
                         navList.classList.remove('active');
                         hamburgerMenu.classList.remove('open');
                     }
-                });
-            });
-
-            // ----- Carrossel de Destaques -----
-            const carouselWrapper = document.querySelector('.carousel-wrapper');
-            const prevBtn = document.querySelector('.carousel-btn.prev');
-            const nextBtn = document.querySelector('.carousel-btn.next');
-
-            let scrollAmount = 0;
-            const cardWidth = 310; // Largura do card + gap (280px + 30px gap)
-
-            nextBtn.addEventListener('click', () => {
-                scrollAmount += cardWidth;
-                if (scrollAmount > carouselWrapper.scrollWidth - carouselWrapper.clientWidth) {
-                    scrollAmount = 0; // Volta para o início se chegar ao fim
-                }
-                carouselWrapper.scrollTo({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            });
-
-            prevBtn.addEventListener('click', () => {
-                scrollAmount -= cardWidth;
-                if (scrollAmount < 0) {
-                    scrollAmount = carouselWrapper.scrollWidth - carouselWrapper.clientWidth; // Vai para o fim se chegar ao início
-                }
-                carouselWrapper.scrollTo({
-                    left: scrollAmount,
-                    behavior: 'smooth'
                 });
             });
 
