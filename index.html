@@ -30,10 +30,10 @@
 
         body {
             font-family: 'Oxanium', sans-serif;
-            background-color: var(--background-light); /* Alterado para branco */
-            color: var(--text-light); /* Alterado para preto */
+            background-color: var(--background-light);
+            color: var(--text-light);
             line-height: 1.6;
-            overflow-x: hidden; /* Evita scroll horizontal */
+            overflow-x: hidden;
         }
 
         .container {
@@ -71,13 +71,13 @@
 
         .btn-primary {
             background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
-            color: var(--text-dark); /* Alterado para branco */
+            color: var(--text-dark);
             border: none;
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4); /* Sombra roxa */
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
 
         .btn-secondary {
@@ -88,15 +88,15 @@
 
         .btn-secondary:hover {
             background-color: var(--primary-color);
-            color: var(--text-dark); /* Alterado para branco */
-            box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3); /* Sombra roxa */
+            color: var(--text-dark);
+            box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3);
         }
 
         h1, h2, h3 {
             margin-bottom: 20px;
             font-weight: 700;
             text-align: center;
-            color: var(--secondary-color); /* Alterado para preto */
+            color: var(--secondary-color);
         }
 
         h2 {
@@ -115,13 +115,13 @@
 
         /* Header */
         header {
-            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2);
             border-bottom: 1px solid rgba(138, 43, 226, 0.1);
         }
 
@@ -152,7 +152,7 @@
         }
 
         .nav-list a {
-            color: var(--secondary-color); /* Alterado para preto */
+            color: var(--secondary-color);
             font-weight: bold;
             font-size: 1.1em;
             position: relative;
@@ -193,8 +193,8 @@
 
         /* Hero Banner */
         .hero-banner {
-            background: url('imagens/fundo.png') no-repeat center center/cover; /* Imagem com roxo e tecnologia */
-            color: var(--text-dark); /* Alterado para branco */
+            background: url('imagens/fundo.png') no-repeat center center/cover;
+            color: var(--text-dark);
             text-align: center;
             padding: 100px 0;
             display: flex;
@@ -223,20 +223,20 @@
         .hero-banner h1 {
             font-size: 3.5em;
             margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(138, 43, 226, 0.7); /* Sombra roxa */
-            color: var(--text-dark); /* Certifica-se que o H1 no banner é branco */
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+            color: var(--text-dark);
         }
 
         .hero-banner p {
             font-size: 1.4em;
             margin-bottom: 40px;
             opacity: 0.9;
-            color: var(--text-dark); /* Certifica-se que o P no banner é branco */
+            color: var(--text-dark);
         }
 
-        /* Destaques da Semana (Grid Estático) */
-        .highlight-grid-section { /* Novo nome para a seção */
-            background-color: var(--background-light); /* Fundo branco */
+        /* Destaques da Semana */
+        .highlight-grid-section {
+            background-color: var(--background-light);
             padding: 80px 0;
         }
 
@@ -244,22 +244,22 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            justify-items: center; /* Centraliza os itens na grid */
+            justify-items: center;
         }
 
         .product-card {
-            background-color: #f8f8f8; /* Branco mais suave para o card */
+            background-color: #f8f8f8;
             border-radius: var(--border-radius);
             overflow: hidden;
             text-align: center;
             padding: 20px;
-            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1); /* Sombra roxa */
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1);
             transition: transform var(--transition-speed) ease;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2);
         }
 
         .product-card img {
@@ -267,7 +267,7 @@
             height: 180px;
             object-fit: contain;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2); /* Borda roxa */
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
             padding-bottom: 15px;
         }
 
@@ -284,7 +284,7 @@
 
         /* Banners de Promoção */
         .promotion-banners {
-            background-color: var(--background-light); /* Fundo branco */
+            background-color: var(--background-light);
             padding: 80px 0;
             text-align: center;
         }
@@ -297,10 +297,10 @@
         }
 
         .promo-item {
-            background-color: #f8f8f8; /* Branco mais suave para o card */
+            background-color: #f8f8f8;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1); /* Sombra roxa */
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1);
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -311,7 +311,7 @@
 
         .promo-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2);
         }
 
         .promo-item img {
@@ -325,60 +325,60 @@
         .promo-item p {
             font-size: 1.2em;
             font-weight: bold;
-            color: var(--primary-color); /* Roxo */
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
 
         .countdown {
             font-size: 1.1em;
-            color: #FFD700; /* Dourado para o countdown (mantido para destaque) */
+            color: #FFD700;
             margin-bottom: 20px;
             font-weight: bold;
         }
 
-        /* Página de Produtos (simulada na mesma página via JS) */
+        /* Página de Produtos */
         .product-categories {
-            background-color: var(--background-light); /* Fundo branco */
+            background-color: var(--background-light);
             padding: 30px 0;
             text-align: center;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.1); /* Borda roxa */
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
         }
 
         .category-list {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px; /* Espaçamento entre os botões */
+            gap: 15px;
             margin-top: 20px;
-            max-width: 800px; /* Limita a largura para melhor organização */
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .category-btn {
-            background-color: #f0f0f0; /* Cinza claro para o botão */
+            background-color: #f0f0f0;
             color: var(--primary-color);
             border: 1px solid var(--primary-color);
             padding: 10px 20px;
-            border-radius: 25px; /* Mais arredondado */
+            border-radius: 25px;
             cursor: pointer;
             font-size: 1em;
             transition: all var(--transition-speed);
-            flex-grow: 1; /* Permite que os botões cresçam para preencher o espaço */
-            min-width: 120px; /* Garante uma largura mínima */
+            flex-grow: 1;
+            min-width: 120px;
             text-align: center;
         }
 
         .category-btn:hover, .category-btn.active {
             background-color: var(--primary-color);
-            color: var(--text-dark); /* Alterado para branco */
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5); /* Sombra roxa */
-            transform: translateY(-2px); /* Pequeno efeito de elevação */
+            color: var(--text-dark);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            transform: translateY(-2px);
         }
 
         .product-grid-section {
             padding: 60px 0;
-            background-color: var(--background-light); /* Fundo branco */
+            background-color: var(--background-light);
         }
 
         .product-grid {
@@ -388,30 +388,25 @@
             margin-top: 40px;
         }
 
-        /* Reutiliza .product-card */
-        .product-grid .product-card {
-            width: auto; /* Remove largura fixa para grid */
-        }
-
-        /* Página de Contato (simulada na mesma página via JS) */
+        /* Página de Contato */
         .contact-form-section {
-            background-color: var(--background-light); /* Fundo branco */
+            background-color: var(--background-light);
             padding: 80px 0;
             text-align: center;
         }
 
         .contact-form-section h2 {
             margin-bottom: 40px;
-            color: var(--secondary-color); /* Alterado para preto */
+            color: var(--secondary-color);
         }
 
         .contact-form {
-            background-color: #f8f8f8; /* Branco mais suave */
+            background-color: #f8f8f8;
             padding: 40px;
             border-radius: var(--border-radius);
             max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
         }
 
         .form-group {
@@ -430,13 +425,14 @@
         .form-group input[type="email"],
         .form-group input[type="password"],
         .form-group input[type="url"],
-        .form-group select {
+        .form-group select,
+        .form-group input[type="file"] {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--primary-color);
             border-radius: 5px;
-            background-color: #ffffff; /* Fundo branco para input */
-            color: var(--secondary-color); /* Texto preto para input */
+            background-color: #ffffff;
+            color: var(--secondary-color);
             font-size: 1em;
             transition: border-color var(--transition-speed);
         }
@@ -445,14 +441,15 @@
         .form-group input[type="email"]:focus,
         .form-group input[type="password"]:focus,
         .form-group input[type="url"]:focus,
-        .form-group select:focus {
+        .form-group select:focus,
+        .form-group input[type="file"]:focus {
             outline: none;
-            border-color: var(--primary-color); /* Roxo no focus */
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); /* Sombra roxa */
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
         }
 
         .form-group input::placeholder {
-            color: rgba(0, 0, 0, 0.6); /* Placeholder mais escuro */
+            color: rgba(0, 0, 0, 0.6);
         }
 
         .checkbox-group {
@@ -466,12 +463,12 @@
             margin-right: 10px;
             width: 18px;
             height: 18px;
-            accent-color: var(--primary-color); /* Cor do checkbox */
+            accent-color: var(--primary-color);
         }
 
         .checkbox-group label {
             font-size: 0.95em;
-            color: var(--secondary-color); /* Alterado para preto */
+            color: var(--secondary-color);
         }
 
         .contact-form button {
@@ -487,17 +484,17 @@
             background-color: #28a745;
             color: white;
             border-radius: var(--border-radius);
-            display: none; /* Oculto por padrão */
+            display: none;
             text-align: center;
         }
 
         /* Footer */
         footer {
-            background-color: #f0f0f0; /* Cinza claro para o footer */
-            color: rgba(0, 0, 0, 0.7); /* Texto cinza escuro */
+            background-color: #f0f0f0;
+            color: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 30px 0;
-            border-top: 1px solid rgba(138, 43, 226, 0.1); /* Borda roxa */
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
         }
 
         footer p {
@@ -507,7 +504,7 @@
 
         .hidden-db-link {
             cursor: pointer;
-            color: rgba(0, 0, 0, 0.5); /* Mais escuro */
+            color: rgba(0, 0, 0, 0.5);
             font-size: 0.8em;
             display: block;
             margin-top: 10px;
@@ -517,11 +514,11 @@
             color: var(--primary-color);
         }
 
-        /* Estilos para a página de Banco de Dados (exibida via JS) */
+        /* Estilos para a página de Banco de Dados */
         #db-page {
-            display: none; /* Oculto por padrão */
+            display: none;
             padding: 60px 0;
-            background-color: var(--background-light); /* Fundo branco */
+            background-color: var(--background-light);
             min-height: 100vh;
         }
 
@@ -540,8 +537,8 @@
             border-radius: var(--border-radius);
             box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
             max-width: 400px;
-            margin: 0 auto 30px; /* Centraliza e adiciona margem inferior */
-            display: block; /* Visível por padrão ao acessar a página */
+            margin: 0 auto 30px;
+            display: block;
         }
 
         #password-form-container label {
@@ -566,12 +563,12 @@
         }
 
         #db-table-container {
-            background-color: #f8f8f8; /* Branco mais suave */
+            background-color: #f8f8f8;
             padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
             overflow-x: auto;
-            display: none; /* Oculto por padrão, só aparece após senha correta */
+            display: none;
         }
 
         #db-table {
@@ -582,29 +579,29 @@
 
         #db-table th, #db-table td {
             padding: 12px 15px;
-            border: 1px solid #e0e0e0; /* Borda cinza claro para tabela */
+            border: 1px solid #e0e0e0;
             text-align: left;
-            color: var(--secondary-color); /* Texto preto */
+            color: var(--secondary-color);
         }
 
         #db-table th {
             background-color: var(--primary-color);
-            color: var(--text-dark); /* Branco */
+            color: var(--text-dark);
             font-weight: bold;
             text-transform: uppercase;
         }
 
         #db-table tr:nth-child(even) {
-            background-color: #f0f0f0; /* Fundo cinza suave para linhas pares */
+            background-color: #f0f0f0;
         }
 
         #db-table tr:hover {
-            background-color: #e8e8e8; /* Cinza um pouco mais escuro no hover */
+            background-color: #e8e8e8;
         }
 
         #db-error-message {
             color: #ff4d4d;
-            margin-top: 10px; /* Ajustado para estar mais próximo do campo */
+            margin-top: 10px;
             font-weight: bold;
             display: none;
             text-align: center;
@@ -670,7 +667,7 @@
             text-align: center;
         }
 
-        /* Media Queries para Responsividade (Mobile-First) */
+        /* Media Queries para Responsividade */
         @media (max-width: 768px) {
             .hero-banner h1 {
                 font-size: 2.5em;
@@ -684,9 +681,9 @@
                 display: none;
                 flex-direction: column;
                 width: 100%;
-                background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
+                background-color: rgba(255, 255, 255, 0.9);
                 position: absolute;
-                top: 80px; /* Ajuste conforme a altura do header */
+                top: 80px;
                 left: 0;
                 padding: 20px 0;
                 border-top: 1px solid var(--primary-color);
@@ -705,19 +702,18 @@
                 display: block;
             }
 
-            /* No longer a carousel, so these styles are less critical but kept for card display */
             .highlight-grid {
-                grid-template-columns: 1fr; /* Uma coluna em mobile */
+                grid-template-columns: 1fr;
             }
 
             .product-card {
-                width: 90%; /* Ajuste a largura para ocupar a maior parte da tela mobile */
-                max-width: 300px; /* Limite máximo */
-                margin: 0 auto; /* Centraliza */
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
             }
 
             .product-grid {
-                grid-template-columns: 1fr; /* Uma coluna em mobile */
+                grid-template-columns: 1fr;
             }
 
             .banner-grid {
@@ -728,20 +724,18 @@
                 padding: 15px;
             }
 
-            /* Melhorias específicas para botões de categoria em mobile */
             .category-list {
-                gap: 10px; /* Reduz o espaçamento em telas menores */
-                padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+                gap: 10px;
+                padding: 0 10px;
             }
 
             .category-btn {
-                font-size: 0.9em; /* Diminui um pouco a fonte */
-                padding: 8px 15px; /* Ajusta o padding */
-                min-width: unset; /* Remove o min-width para flexibilidade total */
-                flex-basis: auto; /* Permite que o flexbox calcule a largura */
+                font-size: 0.9em;
+                padding: 8px 15px;
+                min-width: unset;
+                flex-basis: auto;
             }
 
-            /* Ajustes para a página de administração em mobile */
             #add-product-form, #product-list-container {
                 padding: 20px;
             }
@@ -775,11 +769,10 @@
             }
 
             .category-btn {
-                font-size: 0.85em; /* Ajuste final para telas muito pequenas */
+                font-size: 0.85em;
                 padding: 7px 12px;
             }
 
-            /* Ajustes adicionais para a página de administração */
             #product-admin-container {
                 padding: 0 10px;
             }
@@ -968,8 +961,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="product-image">URL da Imagem:</label>
-                        <input type="url" id="product-image" required placeholder="https://exemplo.com/imagem.jpg">
+                        <label for="product-image">Imagem do Produto:</label>
+                        <input type="file" id="product-image" accept="image/*" required>
                     </div>
                     
                     <div class="form-group">
@@ -1003,18 +996,16 @@
     </section>
 
     <script>
-        // JavaScript para o CyberStore
         document.addEventListener('DOMContentLoaded', () => {
-            // ----- Navegação e Menu Hamburguer -----
+            // Navegação e Menu Hamburguer
             const hamburgerMenu = document.querySelector('.hamburger-menu');
             const navList = document.querySelector('.nav-list');
 
             hamburgerMenu.addEventListener('click', () => {
                 navList.classList.toggle('active');
-                hamburgerMenu.classList.toggle('open'); // Adiciona/remove classe para animação
+                hamburgerMenu.classList.toggle('open');
             });
 
-            // Fechar o menu ao clicar em um item (apenas em mobile)
             navList.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     if (window.innerWidth <= 768) {
@@ -1024,7 +1015,7 @@
                 });
             });
 
-            // ----- Countdown para Promoções -----
+            // Countdown para Promoções
             function startCountdown(elementId, hours, minutes, seconds) {
                 let totalSeconds = hours * 3600 + minutes * 60 + seconds;
                 const countdownElement = document.getElementById(elementId);
@@ -1049,13 +1040,9 @@
                 }, 1000);
             }
 
-            // Iniciar os countdowns (ajuste os valores conforme necessário)
-            startCountdown('countdown1', 24, 0, 0); // 24 horas
-            startCountdown('countdown2', 12, 30, 0); // 12 horas e 30 minutos
-
-            // ----- Configuração do IndexedDB -----
+            // Configuração do IndexedDB
             const dbName = "CyberStoreDB";
-            const dbVersion = 3; // Versão incrementada para criar as lojas necessárias
+            const dbVersion = 3;
             
             let db;
             const request = indexedDB.open(dbName, dbVersion);
@@ -1063,12 +1050,10 @@
             request.onupgradeneeded = (event) => {
                 const db = event.target.result;
                 
-                // Cria a loja de e-mails se não existir
                 if (!db.objectStoreNames.contains('emails')) {
                     db.createObjectStore("emails", { keyPath: "email" });
                 }
                 
-                // Cria a loja de produtos se não existir
                 if (!db.objectStoreNames.contains('products')) {
                     const store = db.createObjectStore("products", { keyPath: "id", autoIncrement: true });
                     store.createIndex("category", "category", { unique: false });
@@ -1078,7 +1063,6 @@
             request.onsuccess = (event) => {
                 db = event.target.result;
                 console.log("Banco de dados aberto com sucesso");
-                // Carrega os produtos após o banco de dados estar pronto
                 loadInitialProducts();
             };
             
@@ -1086,7 +1070,7 @@
                 console.error("Erro ao abrir o banco de dados:", event.target.error);
             };
 
-            // ----- Funções para manipulação de produtos -----
+            // Funções para manipulação de produtos
             function addProduct(product, callback) {
                 const transaction = db.transaction(["products"], "readwrite");
                 const store = transaction.objectStore("products");
@@ -1134,7 +1118,7 @@
                 };
             }
 
-            // ----- Carregar produtos iniciais -----
+            // Carregar produtos iniciais
             function loadInitialProducts() {
                 getAllProducts((products) => {
                     if (products.length === 0) {
@@ -1147,14 +1131,13 @@
                         });
                     }
                     
-                    // Renderiza os produtos na página
                     renderProducts();
                     renderHighlightProducts();
                     renderPromoProducts();
                 });
             }
 
-            // ----- Renderização de produtos -----
+            // Renderização de produtos
             const productGrid = document.getElementById('productGrid');
             const highlightGrid = document.getElementById('highlightGrid');
             const promoGrid = document.getElementById('promoGrid');
@@ -1162,9 +1145,8 @@
 
             function renderProducts(filterCategory = 'all') {
                 getAllProducts((products) => {
-                    productGrid.innerHTML = ''; // Limpa a grid
+                    productGrid.innerHTML = '';
                     
-                    // Filtra os produtos (excluindo destaques e promoções)
                     const filteredProducts = products.filter(p => 
                         (filterCategory === 'all' || p.category === filterCategory) && 
                         p.category !== 'destaques' && 
@@ -1180,7 +1162,7 @@
                         const productCard = document.createElement('div');
                         productCard.classList.add('product-card');
                         productCard.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Não+Disponível'">
+                            <img src="${product.image}" alt="${product.name}">
                             <h3>${product.name}</h3>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
                         `;
@@ -1203,7 +1185,7 @@
                         const productCard = document.createElement('div');
                         productCard.classList.add('product-card');
                         productCard.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Não+Disponível'">
+                            <img src="${product.image}" alt="${product.name}">
                             <h3>${product.name}</h3>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
                         `;
@@ -1226,7 +1208,7 @@
                         const promoItem = document.createElement('div');
                         promoItem.classList.add('promo-item');
                         promoItem.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x200/FFFFFF/8A2BE2?text=Promoção'">
+                            <img src="${product.image}" alt="${product.name}">
                             <p>${product.name}</p>
                             <span class="countdown">Termina em: <span>24h 00m 00s</span></span>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Aproveitar</a>
@@ -1239,21 +1221,19 @@
             // Adiciona evento de clique para os botões de categoria
             categoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Remove 'active' de todos os botões
                     categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    // Adiciona 'active' ao botão clicado
                     button.classList.add('active');
                     const category = button.dataset.category;
                     renderProducts(category);
                 });
             });
 
-            // ----- Captação de E-mails (LocalStorage como "banco de dados") -----
+            // Captação de E-mails
             const emailSignupForm = document.getElementById('email-signup-form');
             const confirmationMessage = document.getElementById('confirmation-message');
 
             emailSignupForm.addEventListener('submit', (e) => {
-                e.preventDefault(); // Evita o recarregamento da página
+                e.preventDefault();
 
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
@@ -1262,11 +1242,10 @@
                 if (acceptPromotions) {
                     let emails = JSON.parse(localStorage.getItem('cyberstoreEmails')) || [];
 
-                    // Verifica se o e-mail já existe para evitar duplicatas
                     const emailExists = emails.some(user => user.email === email);
                     if (emailExists) {
                         confirmationMessage.style.display = 'block';
-                        confirmationMessage.style.backgroundColor = '#ffc107'; // Amarelo para aviso
+                        confirmationMessage.style.backgroundColor = '#ffc107';
                         confirmationMessage.textContent = 'Este e-mail já está cadastrado!';
                         setTimeout(() => confirmationMessage.style.display = 'none', 3000);
                         return;
@@ -1276,19 +1255,19 @@
                     localStorage.setItem('cyberstoreEmails', JSON.stringify(emails));
 
                     confirmationMessage.style.display = 'block';
-                    confirmationMessage.style.backgroundColor = '#28a745'; // Verde para sucesso
+                    confirmationMessage.style.backgroundColor = '#28a745';
                     confirmationMessage.textContent = 'E-mail cadastrado com sucesso! Em breve, ofertas exclusivas.';
-                    emailSignupForm.reset(); // Limpa o formulário
+                    emailSignupForm.reset();
                     setTimeout(() => confirmationMessage.style.display = 'none', 3000);
                 } else {
                     confirmationMessage.style.display = 'block';
-                    confirmationMessage.style.backgroundColor = '#dc3545'; // Vermelho para erro
+                    confirmationMessage.style.backgroundColor = '#dc3545';
                     confirmationMessage.textContent = 'Você deve aceitar receber promoções para se cadastrar.';
                     setTimeout(() => confirmationMessage.style.display = 'none', 3000);
                 }
             });
 
-            // ----- Banco de Dados Oculto (com formulário de senha) -----
+            // Banco de Dados Oculto
             const dbAccessLink = document.getElementById('db-access');
             const dbPage = document.getElementById('db-page');
             const mainContent = document.querySelector('main');
@@ -1302,20 +1281,18 @@
             const dbTableContainer = document.getElementById('db-table-container');
             const dbBackButton = document.getElementById('db-back-button');
 
-            const correctPassword = "Lima@321"; // SENHA: Lima@321
+            const correctPassword = "Lima@321";
 
             dbAccessLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Esconde o conteúdo principal
                 mainContent.style.display = 'none';
                 header.style.display = 'none';
                 footer.style.display = 'none';
-                // Mostra a página do DB (inicialmente com o formulário de senha)
                 dbPage.style.display = 'block';
                 passwordFormContainer.style.display = 'block';
-                dbTableContainer.style.display = 'none'; // Garante que a tabela esteja oculta
-                dbErrorMessage.style.display = 'none'; // Esconde qualquer erro anterior
-                dbPasswordInput.value = ''; // Limpa o campo de senha
+                dbTableContainer.style.display = 'none';
+                dbErrorMessage.style.display = 'none';
+                dbPasswordInput.value = '';
             });
 
             dbPasswordForm.addEventListener('submit', (e) => {
@@ -1323,26 +1300,26 @@
                 const enteredPassword = dbPasswordInput.value;
 
                 if (enteredPassword === correctPassword) {
-                    passwordFormContainer.style.display = 'none'; // Oculta o formulário de senha
-                    dbTableContainer.style.display = 'block'; // Mostra a tabela de e-mails
-                    loadEmailsToTable(); // Carrega os e-mails
+                    passwordFormContainer.style.display = 'none';
+                    dbTableContainer.style.display = 'block';
+                    loadEmailsToTable();
                 } else {
                     dbErrorMessage.textContent = 'Senha incorreta. Tente novamente.';
                     dbErrorMessage.style.display = 'block';
-                    dbPasswordInput.value = ''; // Limpa o campo de senha
+                    dbPasswordInput.value = '';
                     setTimeout(() => dbErrorMessage.style.display = 'none', 3000);
                 }
             });
 
             dbBackButton.addEventListener('click', () => {
-                dbPage.style.display = 'none'; // Oculta a página do DB
-                mainContent.style.display = 'block'; // Mostra o conteúdo principal
-                header.style.display = 'block'; // Mostra o header
-                footer.style.display = 'block'; // Mostra o footer
+                dbPage.style.display = 'none';
+                mainContent.style.display = 'block';
+                header.style.display = 'block';
+                footer.style.display = 'block';
             });
 
             function loadEmailsToTable() {
-                dbTableBody.innerHTML = ''; // Limpa a tabela
+                dbTableBody.innerHTML = '';
                 const emails = JSON.parse(localStorage.getItem('cyberstoreEmails')) || [];
 
                 if (emails.length === 0) {
@@ -1363,7 +1340,7 @@
                 }
             }
 
-            // ----- Administração de Produtos -----
+            // Administração de Produtos
             const productAdminLink = document.getElementById('product-admin');
             const productAdminPage = document.getElementById('product-admin-page');
             const productPasswordForm = document.getElementById('product-password-form');
@@ -1413,36 +1390,40 @@
             addProductForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                const product = {
-                    name: document.getElementById('product-name').value,
-                    category: document.getElementById('product-category').value,
-                    image: document.getElementById('product-image').value,
-                    amazonLink: document.getElementById('product-link').value
+                const imageFile = document.getElementById('product-image').files[0];
+                if (!imageFile) {
+                    alert("Por favor, selecione uma imagem para o produto.");
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const product = {
+                        name: document.getElementById('product-name').value,
+                        category: document.getElementById('product-category').value,
+                        image: event.target.result, // Armazena a imagem como base64
+                        amazonLink: document.getElementById('product-link').value
+                    };
+                    
+                    addProduct(product, () => {
+                        addProductForm.reset();
+                        
+                        productMessage.textContent = "Produto adicionado com sucesso!";
+                        productMessage.style.display = "block";
+                        productMessage.style.backgroundColor = "#28a745";
+                        productMessage.style.color = "white";
+                        
+                        loadProductsToAdmin();
+                        renderProducts();
+                        renderHighlightProducts();
+                        renderPromoProducts();
+                        
+                        setTimeout(() => {
+                            productMessage.style.display = "none";
+                        }, 3000);
+                    });
                 };
-                
-                addProduct(product, () => {
-                    // Limpa o formulário
-                    addProductForm.reset();
-                    
-                    // Mostra mensagem de sucesso
-                    productMessage.textContent = "Produto adicionado com sucesso!";
-                    productMessage.style.display = "block";
-                    productMessage.style.backgroundColor = "#28a745";
-                    productMessage.style.color = "white";
-                    
-                    // Atualiza a lista de produtos
-                    loadProductsToAdmin();
-                    
-                    // Atualiza as seções na página principal
-                    renderProducts();
-                    renderHighlightProducts();
-                    renderPromoProducts();
-                    
-                    // Esconde a mensagem após 3 segundos
-                    setTimeout(() => {
-                        productMessage.style.display = "none";
-                    }, 3000);
-                });
+                reader.readAsDataURL(imageFile);
             });
 
             function loadProductsToAdmin() {
@@ -1488,7 +1469,6 @@
                 return categories[categoryKey] || categoryKey;
             }
 
-            // Função global para deletar produto (precisa ser acessível pelo onclick)
             window.deleteProductFromList = function(id) {
                 if (confirm("Tem certeza que deseja excluir este produto?")) {
                     deleteProduct(id, () => {
