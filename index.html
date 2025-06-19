@@ -427,7 +427,10 @@
         }
 
         .form-group input[type="text"],
-        .form-group input[type="email"] {
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="url"],
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--primary-color);
@@ -439,7 +442,10 @@
         }
 
         .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus {
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus,
+        .form-group input[type="url"]:focus,
+        .form-group select:focus {
             outline: none;
             border-color: var(--primary-color); /* Roxo no focus */
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.3); /* Sombra roxa */
@@ -604,6 +610,66 @@
             text-align: center;
         }
 
+        /* Estilos para a página de administração de produtos */
+        #product-admin-page {
+            display: none;
+            padding: 60px 0;
+            background-color: var(--background-light);
+            min-height: 100vh;
+        }
+
+        #product-admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #add-product-form {
+            background-color: #f8f8f8;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            margin-bottom: 30px;
+        }
+
+        #product-list-container {
+            background-color: #f8f8f8;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+        }
+
+        #product-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #product-list th, #product-list td {
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        #product-list th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        #product-list tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        #product-list tr:hover {
+            background-color: #e8e8e8;
+        }
+
+        #product-message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            display: none;
+            text-align: center;
+        }
+
         /* Media Queries para Responsividade (Mobile-First) */
         @media (max-width: 768px) {
             .hero-banner h1 {
@@ -674,6 +740,16 @@
                 min-width: unset; /* Remove o min-width para flexibilidade total */
                 flex-basis: auto; /* Permite que o flexbox calcule a largura */
             }
+
+            /* Ajustes para a página de administração em mobile */
+            #add-product-form, #product-list-container {
+                padding: 20px;
+            }
+
+            #product-list th, #product-list td {
+                padding: 8px 10px;
+                font-size: 0.9em;
+            }
         }
 
         @media (max-width: 480px) {
@@ -701,6 +777,16 @@
             .category-btn {
                 font-size: 0.85em; /* Ajuste final para telas muito pequenas */
                 padding: 7px 12px;
+            }
+
+            /* Ajustes adicionais para a página de administração */
+            #product-admin-container {
+                padding: 0 10px;
+            }
+
+            #product-list th, #product-list td {
+                padding: 6px 8px;
+                font-size: 0.8em;
             }
         }
     </style>
@@ -736,32 +822,8 @@
         <section class="highlight-grid-section">
             <div class="container">
                 <h2>Destaques da Semana</h2>
-                <div class="highlight-grid">
-                    <div class="product-card">
-                        <img src="https://m.media-amazon.com/images/I/71+2o31QvBL._AC_SX679_.jpg" alt="Fone de Ouvido Bluetooth JBL Wave Buds">
-                        <h3>Fone de Ouvido Bluetooth JBL Wave Buds</h3>
-                        <a href="https://amzn.to/4c44N5C" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://m.media-amazon.com/images/I/71u9s27K8zL._AC_SX679_.jpg" alt="Smartwatch Samsung Galaxy Watch6">
-                        <h3>Smartwatch Samsung Galaxy Watch6</h3>
-                        <a href="https://amzn.to/3RhO3v0" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://m.media-amazon.com/images/I/71+Xj140eHL._AC_SX679_.jpg" alt="Carregador Portátil Anker PowerCore">
-                        <h3>Carregador Portátil Anker PowerCore</h3>
-                        <a href="https://amzn.to/3Vj49lY" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://m.media-amazon.com/images/I/61b17Ld+2kL._AC_SX679_.jpg" alt="Teclado Gamer HyperX Alloy Origins Core">
-                        <h3>Teclado Gamer HyperX Alloy Origins Core</h3>
-                        <a href="https://amzn.to/3Kthv4H" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="https://m.media-amazon.com/images/I/71ZpT-b3mWL._AC_SX679_.jpg" alt="Mouse Gamer Logitech G502 HERO">
-                        <h3>Mouse Gamer Logitech G502 HERO</h3>
-                        <a href="https://amzn.to/3V7N3x7" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    </div>
+                <div class="highlight-grid" id="highlightGrid">
+                    <!-- Produtos serão carregados dinamicamente aqui -->
                 </div>
             </div>
         </section>
@@ -769,19 +831,8 @@
         <section class="promotion-banners">
             <div class="container">
                 <h2>Promoções Relâmpago</h2>
-                <div class="banner-grid">
-                    <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x200/FFFFFF/8A2BE2?text=Promoção+Fones" alt="Promoção de Fones de Ouvido">
-                        <p>Fones de Ouvido com até 30% OFF!</p>
-                        <span class="countdown">Termina em: <span id="countdown1">24h 00m 00s</span></span>
-                        <a href="LINK_AFILIADO_AMAZON_PROMO1" target="_blank" class="btn-secondary">Aproveitar</a>
-                    </div>
-                    <div class="promo-item">
-                        <img src="https://via.placeholder.com/400x200/FFFFFF/BA55D3?text=Smartwatches+em+Oferta" alt="Smartwatches em Oferta">
-                        <p>Smartwatches com Descontos Exclusivos!</p>
-                        <span class="countdown">Termina em: <span id="countdown2">12h 30m 00s</span></span>
-                        <a href="LINK_AFILIADO_AMAZON_PROMO2" target="_blank" class="btn-secondary">Confira</a>
-                    </div>
+                <div class="banner-grid" id="promoGrid">
+                    <!-- Promoções serão carregadas dinamicamente aqui -->
                 </div>
             </div>
         </section>
@@ -797,6 +848,8 @@
                     <button class="category-btn" data-category="notebooks">Notebooks</button>
                     <button class="category-btn" data-category="perifericos">Periféricos</button>
                     <button class="category-btn" data-category="redes">Redes de Computadores</button>
+                    <button class="category-btn" data-category="destaques">Destaques da Semana</button>
+                    <button class="category-btn" data-category="promocoes">Promoções Relâmpago</button>
                 </div>
             </div>
         </section>
@@ -804,6 +857,7 @@
         <section class="product-grid-section">
             <div class="container">
                 <div class="product-grid" id="productGrid">
+                    <!-- Produtos serão carregados dinamicamente aqui -->
                 </div>
             </div>
         </section>
@@ -837,7 +891,10 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 CyberStore - Todos os direitos reservados.</p>
-            <a href="#" id="db-access" class="hidden-db-link" title="Acesso ao Banco de Dados">© 2025 CyberStore</a>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#" id="db-access" class="hidden-db-link" title="Acesso ao Banco de Dados">E-mails Cadastrados</a>
+                <a href="#" id="product-admin" class="hidden-db-link" title="Administrar Produtos">Adicionar Produtos</a>
+            </div>
         </div>
     </footer>
 
@@ -872,9 +929,83 @@
         </div>
     </section>
 
+    <section id="product-admin-page">
+        <div class="container">
+            <h2>Administração de Produtos</h2>
+            
+            <div id="product-password-form-container" style="background-color: #f8f8f8; padding: 30px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); max-width: 400px; margin: 0 auto 30px;">
+                <p>Por favor, digite a senha para acessar.</p>
+                <form id="product-password-form">
+                    <div class="form-group">
+                        <label for="product-password">Senha:</label>
+                        <input type="password" id="product-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Acessar</button>
+                </form>
+                <p id="product-error-message" style="color: #ff4d4d; margin-top: 10px; font-weight: bold; display: none; text-align: center;"></p>
+            </div>
+            
+            <div id="product-admin-container" style="display: none;">
+                <form id="add-product-form">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Adicionar Novo Produto</h3>
+                    
+                    <div class="form-group">
+                        <label for="product-name">Nome do Produto:</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-category">Categoria:</label>
+                        <select id="product-category" required>
+                            <option value="">Selecione...</option>
+                            <option value="fones">Fones de Ouvido</option>
+                            <option value="smartwatches">Smartwatches</option>
+                            <option value="carregadores">Carregadores</option>
+                            <option value="notebooks">Notebooks</option>
+                            <option value="perifericos">Periféricos</option>
+                            <option value="redes">Redes de Computadores</option>
+                            <option value="destaques">Destaques da Semana</option>
+                            <option value="promocoes">Promoções Relâmpago</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-image">URL da Imagem:</label>
+                        <input type="url" id="product-image" required placeholder="https://exemplo.com/imagem.jpg">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-link">Link Afiliado Amazon:</label>
+                        <input type="url" id="product-link" required placeholder="https://amzn.to/...">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Adicionar Produto</button>
+                    <div id="product-message"></div>
+                </form>
+                
+                <div id="product-list-container">
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Produtos Cadastrados</h3>
+                    <table id="product-list">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Produtos serão carregados aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <button class="btn-primary" id="product-back-button" style="margin: 30px auto 0; display: block;">Voltar para o Site</button>
+            </div>
+        </div>
+    </section>
+
     <script>
         // JavaScript para o CyberStore
-
         document.addEventListener('DOMContentLoaded', () => {
             // ----- Navegação e Menu Hamburguer -----
             const hamburgerMenu = document.querySelector('.hamburger-menu');
@@ -924,111 +1055,206 @@
             startCountdown('countdown1', 24, 0, 0); // 24 horas
             startCountdown('countdown2', 12, 30, 0); // 12 horas e 30 minutos
 
-            // ----- Produtos (Array de Exemplo) -----
-            const products = [
-                {
-                    name: "Fone de Ouvido Bluetooth JBL Wave Buds",
-                    category: "fones",
-                    image: "https://m.media-amazon.com/images/I/71+2o31QvBL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/4c44N5C"
-                },
-                {
-                    name: "Smartwatch Samsung Galaxy Watch6",
-                    category: "smartwatches",
-                    image: "https://m.media-amazon.com/images/I/71u9s27K8zL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3RhO3v0"
-                },
-                {
-                    name: "Carregador Portátil Anker PowerCore",
-                    category: "carregadores",
-                    image: "https://m.media-amazon.com/images/I/71+Xj140eHL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Vj49lY"
-                },
-                {
-                    name: "Teclado Gamer HyperX Alloy Origins Core",
-                    category: "perifericos",
-                    image: "https://m.media-amazon.com/images/I/61b17Ld+2kL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Kthv4H"
-                },
-                {
-                    name: "Mouse Gamer Logitech G502 HERO",
-                    category: "perifericos",
-                    image: "https://m.media-amazon.com/images/I/71ZpT-b3mWL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3V7N3x7"
-                },
-                {
-                    name: "Notebook Acer Nitro 5",
-                    category: "notebooks",
-                    image: "https://m.media-amazon.com/images/I/71y+m2j05tL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Ve2G4c"
-                },
-                {
-                    name: "Fone de Ouvido Sony WH-1000XM5",
-                    category: "fones",
-                    image: "https://m.media-amazon.com/images/I/61yN2mJ9lXL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Ky2jB6"
-                },
-                {
-                    name: "Smartwatch Amazfit Bip 3 Pro",
-                    category: "smartwatches",
-                    image: "https://m.media-amazon.com/images/I/612P0+zG4gL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Xl7R2M"
-                },
-                {
-                    name: "Carregador Veicular USB-C Baseus",
-                    category: "carregadores",
-                    image: "https://m.media-amazon.com/images/I/61gE-xS2XzL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Kq4c3T"
-                },
-                {
-                    name: "Roteador Wi-Fi 6 TP-Link Archer AX10",
-                    category: "redes",
-                    image: "https://m.media-amazon.com/images/I/61X-u9o+BVL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Vf2R3X"
-                },
-                {
-                    name: "Cabo de Rede Cat6 UTP 10m",
-                    category: "redes",
-                    image: "https://m.media-amazon.com/images/I/51rY0aG09GL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3Vt1Y2A"
-                },
-                {
-                    name: "Repetidor de Sinal Wi-Fi Intelbras",
-                    category: "redes",
-                    image: "https://m.media-amazon.com/images/I/51F0bL5c4kL._AC_SX679_.jpg",
-                    amazonLink: "https://amzn.to/3yV2W3Z"
+            // ----- Configuração do IndexedDB -----
+            const dbName = "CyberStoreDB";
+            const dbVersion = 3; // Versão incrementada para criar as lojas necessárias
+            
+            let db;
+            const request = indexedDB.open(dbName, dbVersion);
+            
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                
+                // Cria a loja de e-mails se não existir
+                if (!db.objectStoreNames.contains('emails')) {
+                    db.createObjectStore("emails", { keyPath: "email" });
                 }
-                // Adicione mais produtos aqui, incluindo os de 'redes'
-            ];
-
-            const productGrid = document.getElementById('productGrid');
-            const categoryButtons = document.querySelectorAll('.category-btn');
-
-            function renderProducts(filterCategory = 'all') {
-                productGrid.innerHTML = ''; // Limpa a grid
-                const filteredProducts = filterCategory === 'all'
-                    ? products
-                    : products.filter(p => p.category === filterCategory);
-
-                if (filteredProducts.length === 0) {
-                    productGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhum produto encontrado nesta categoria.</p>';
-                    return;
+                
+                // Cria a loja de produtos se não existir
+                if (!db.objectStoreNames.contains('products')) {
+                    const store = db.createObjectStore("products", { keyPath: "id", autoIncrement: true });
+                    store.createIndex("category", "category", { unique: false });
                 }
+            };
+            
+            request.onsuccess = (event) => {
+                db = event.target.result;
+                console.log("Banco de dados aberto com sucesso");
+                // Carrega os produtos após o banco de dados estar pronto
+                loadInitialProducts();
+            };
+            
+            request.onerror = (event) => {
+                console.error("Erro ao abrir o banco de dados:", event.target.error);
+            };
 
-                filteredProducts.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('product-card');
-                    productCard.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}">
-                        <h3>${product.name}</h3>
-                        <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                    `;
-                    productGrid.appendChild(productCard);
+            // ----- Funções para manipulação de produtos -----
+            function addProduct(product, callback) {
+                const transaction = db.transaction(["products"], "readwrite");
+                const store = transaction.objectStore("products");
+                
+                const request = store.add(product);
+                
+                request.onsuccess = () => {
+                    console.log("Produto adicionado com sucesso");
+                    if (callback) callback();
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao adicionar produto:", event.target.error);
+                };
+            }
+            
+            function getAllProducts(callback) {
+                const transaction = db.transaction(["products"], "readonly");
+                const store = transaction.objectStore("products");
+                
+                const request = store.getAll();
+                
+                request.onsuccess = () => {
+                    callback(request.result);
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao obter produtos:", event.target.error);
+                };
+            }
+            
+            function deleteProduct(id, callback) {
+                const transaction = db.transaction(["products"], "readwrite");
+                const store = transaction.objectStore("products");
+                
+                const request = store.delete(id);
+                
+                request.onsuccess = () => {
+                    console.log("Produto deletado com sucesso");
+                    if (callback) callback();
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao deletar produto:", event.target.error);
+                };
+            }
+
+            // ----- Carregar produtos iniciais -----
+            function loadInitialProducts() {
+                getAllProducts((products) => {
+                    if (products.length === 0) {
+                        // Se não houver produtos, podemos adicionar alguns exemplos
+                        const defaultProducts = [
+                            {
+                                name: "Fone de Ouvido Bluetooth JBL Wave Buds",
+                                category: "fones",
+                                image: "https://m.media-amazon.com/images/I/71+2o31QvBL._AC_SX679_.jpg",
+                                amazonLink: "https://amzn.to/4c44N5C"
+                            },
+                            {
+                                name: "Smartwatch Samsung Galaxy Watch6",
+                                category: "smartwatches",
+                                image: "https://m.media-amazon.com/images/I/71u9s27K8zL._AC_SX679_.jpg",
+                                amazonLink: "https://amzn.to/3RhO3v0"
+                            },
+                            {
+                                name: "Carregador Portátil Anker PowerCore",
+                                category: "carregadores",
+                                image: "https://m.media-amazon.com/images/I/71+Xj140eHL._AC_SX679_.jpg",
+                                amazonLink: "https://amzn.to/3Vj49lY"
+                            }
+                        ];
+
+                        defaultProducts.forEach(product => {
+                            addProduct(product);
+                        });
+                    }
+                    
+                    // Renderiza os produtos na página
+                    renderProducts();
+                    renderHighlightProducts();
+                    renderPromoProducts();
                 });
             }
 
-            // Renderiza todos os produtos ao carregar a página
-            renderProducts();
+            // ----- Renderização de produtos -----
+            const productGrid = document.getElementById('productGrid');
+            const highlightGrid = document.getElementById('highlightGrid');
+            const promoGrid = document.getElementById('promoGrid');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+
+            function renderProducts(filterCategory = 'all') {
+                getAllProducts((products) => {
+                    productGrid.innerHTML = ''; // Limpa a grid
+                    
+                    // Filtra os produtos (excluindo destaques e promoções)
+                    const filteredProducts = products.filter(p => 
+                        (filterCategory === 'all' || p.category === filterCategory) && 
+                        p.category !== 'destaques' && 
+                        p.category !== 'promocoes'
+                    );
+                    
+                    if (filteredProducts.length === 0) {
+                        productGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhum produto encontrado nesta categoria.</p>';
+                        return;
+                    }
+                    
+                    filteredProducts.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Não+Disponível'">
+                            <h3>${product.name}</h3>
+                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
+                        `;
+                        productGrid.appendChild(productCard);
+                    });
+                });
+            }
+
+            function renderHighlightProducts() {
+                getAllProducts((products) => {
+                    highlightGrid.innerHTML = '';
+                    const highlightProducts = products.filter(p => p.category === 'destaques');
+                    
+                    if (highlightProducts.length === 0) {
+                        highlightGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhum destaque esta semana.</p>';
+                        return;
+                    }
+                    
+                    highlightProducts.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Não+Disponível'">
+                            <h3>${product.name}</h3>
+                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
+                        `;
+                        highlightGrid.appendChild(productCard);
+                    });
+                });
+            }
+
+            function renderPromoProducts() {
+                getAllProducts((products) => {
+                    promoGrid.innerHTML = '';
+                    const promoProducts = products.filter(p => p.category === 'promocoes');
+                    
+                    if (promoProducts.length === 0) {
+                        promoGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhuma promoção no momento.</p>';
+                        return;
+                    }
+                    
+                    promoProducts.forEach(product => {
+                        const promoItem = document.createElement('div');
+                        promoItem.classList.add('promo-item');
+                        promoItem.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x200/FFFFFF/8A2BE2?text=Promoção'">
+                            <p>${product.name}</p>
+                            <span class="countdown">Termina em: <span>24h 00m 00s</span></span>
+                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Aproveitar</a>
+                        `;
+                        promoGrid.appendChild(promoItem);
+                    });
+                });
+            }
 
             // Adiciona evento de clique para os botões de categoria
             categoryButtons.forEach(button => {
@@ -1096,7 +1322,7 @@
             const dbTableContainer = document.getElementById('db-table-container');
             const dbBackButton = document.getElementById('db-back-button');
 
-            const correctPassword = "Lima@321"; // SENHA: Lima@321 (apenas para demonstração)
+            const correctPassword = "Lima@321"; // SENHA: Lima@321
 
             dbAccessLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1156,6 +1382,143 @@
                     });
                 }
             }
+
+            // ----- Administração de Produtos -----
+            const productAdminLink = document.getElementById('product-admin');
+            const productAdminPage = document.getElementById('product-admin-page');
+            const productPasswordForm = document.getElementById('product-password-form');
+            const productPasswordInput = document.getElementById('product-password');
+            const productErrorMessage = document.getElementById('product-error-message');
+            const productAdminContainer = document.getElementById('product-admin-container');
+            const addProductForm = document.getElementById('add-product-form');
+            const productList = document.getElementById('product-list');
+            const productBackButton = document.getElementById('product-back-button');
+            const productMessage = document.getElementById('product-message');
+
+            productAdminLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                mainContent.style.display = 'none';
+                header.style.display = 'none';
+                footer.style.display = 'none';
+                productAdminPage.style.display = 'block';
+                productAdminContainer.style.display = 'none';
+                productPasswordForm.style.display = 'block';
+                productErrorMessage.style.display = 'none';
+                productPasswordInput.value = '';
+            });
+
+            productPasswordForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const enteredPassword = productPasswordInput.value;
+
+                if (enteredPassword === correctPassword) {
+                    productPasswordForm.style.display = 'none';
+                    productAdminContainer.style.display = 'block';
+                    loadProductsToAdmin();
+                } else {
+                    productErrorMessage.textContent = 'Senha incorreta. Tente novamente.';
+                    productErrorMessage.style.display = 'block';
+                    productPasswordInput.value = '';
+                    setTimeout(() => productErrorMessage.style.display = 'none', 3000);
+                }
+            });
+
+            productBackButton.addEventListener('click', () => {
+                productAdminPage.style.display = 'none';
+                mainContent.style.display = 'block';
+                header.style.display = 'block';
+                footer.style.display = 'block';
+            });
+
+            addProductForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const product = {
+                    name: document.getElementById('product-name').value,
+                    category: document.getElementById('product-category').value,
+                    image: document.getElementById('product-image').value,
+                    amazonLink: document.getElementById('product-link').value
+                };
+                
+                addProduct(product, () => {
+                    // Limpa o formulário
+                    addProductForm.reset();
+                    
+                    // Mostra mensagem de sucesso
+                    productMessage.textContent = "Produto adicionado com sucesso!";
+                    productMessage.style.display = "block";
+                    productMessage.style.backgroundColor = "#28a745";
+                    productMessage.style.color = "white";
+                    
+                    // Atualiza a lista de produtos
+                    loadProductsToAdmin();
+                    
+                    // Atualiza as seções na página principal
+                    renderProducts();
+                    renderHighlightProducts();
+                    renderPromoProducts();
+                    
+                    // Esconde a mensagem após 3 segundos
+                    setTimeout(() => {
+                        productMessage.style.display = "none";
+                    }, 3000);
+                });
+            });
+
+            function loadProductsToAdmin() {
+                getAllProducts((products) => {
+                    productList.innerHTML = '';
+                    
+                    if (products.length === 0) {
+                        productList.innerHTML = `
+                            <tr>
+                                <td colspan="3" style="text-align: center; padding: 20px; font-style: italic;">
+                                    Nenhum produto cadastrado ainda.
+                                </td>
+                            </tr>
+                        `;
+                        return;
+                    }
+                    
+                    products.forEach(product => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${product.name}</td>
+                            <td>${getCategoryName(product.category)}</td>
+                            <td>
+                                <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9em;" onclick="deleteProductFromList(${product.id})">Excluir</button>
+                            </td>
+                        `;
+                        productList.appendChild(tr);
+                    });
+                });
+            }
+
+            function getCategoryName(categoryKey) {
+                const categories = {
+                    'fones': 'Fones de Ouvido',
+                    'smartwatches': 'Smartwatches',
+                    'carregadores': 'Carregadores',
+                    'notebooks': 'Notebooks',
+                    'perifericos': 'Periféricos',
+                    'redes': 'Redes de Computadores',
+                    'destaques': 'Destaques da Semana',
+                    'promocoes': 'Promoções Relâmpago'
+                };
+                return categories[categoryKey] || categoryKey;
+            }
+
+            // Função global para deletar produto (precisa ser acessível pelo onclick)
+            window.deleteProductFromList = function(id) {
+                if (confirm("Tem certeza que deseja excluir este produto?")) {
+                    deleteProduct(id, () => {
+                        loadProductsToAdmin();
+                        renderProducts();
+                        renderHighlightProducts();
+                        renderPromoProducts();
+                    });
+                }
+            };
         });
     </script>
 </body>
