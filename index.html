@@ -528,12 +528,44 @@
             color: var(--primary-color);
         }
 
+        #password-form-container {
+            background-color: #f8f8f8;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            max-width: 400px;
+            margin: 0 auto 30px; /* Centraliza e adiciona margem inferior */
+            display: block; /* Visível por padrão ao acessar a página */
+        }
+
+        #password-form-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        #password-form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+
+        #password-form-container button {
+            width: 100%;
+        }
+
         #db-table-container {
             background-color: #f8f8f8; /* Branco mais suave */
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); /* Sombra roxa */
             overflow-x: auto;
+            display: none; /* Oculto por padrão, só aparece após senha correta */
         }
 
         #db-table {
@@ -566,8 +598,10 @@
 
         #db-error-message {
             color: #ff4d4d;
-            margin-top: 20px;
+            margin-top: 10px; /* Ajustado para estar mais próximo do campo */
             font-weight: bold;
+            display: none;
+            text-align: center;
         }
 
         /* Media Queries para Responsividade (Mobile-First) */
@@ -810,8 +844,19 @@
     <section id="db-page">
         <div class="container">
             <h2>E-mails Cadastrados</h2>
+            <div id="password-form-container">
+                <p>Por favor, digite a senha para acessar.</p>
+                <form id="db-password-form">
+                    <div class="form-group">
+                        <label for="db-password">Senha:</label>
+                        <input type="password" id="db-password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Acessar</button>
+                </form>
+                <p id="db-error-message"></p>
+            </div>
+            
             <div id="db-table-container">
-                <p id="db-error-message" style="display: none;">Senha incorreta. Tente novamente.</p>
                 <table id="db-table">
                     <thead>
                         <tr>
@@ -823,7 +868,7 @@
                     </tbody>
                 </table>
             </div>
-            <button class="btn-primary" onclick="history.back()" style="margin-top: 30px;">Voltar</button>
+            <button class="btn-primary" id="db-back-button" style="margin-top: 30px;">Voltar</button>
         </div>
     </section>
 
@@ -1037,7 +1082,7 @@
                 }
             });
 
-            // ----- Banco de Dados Oculto -----
+            // ----- Banco de Dados Oculto (com formulário de senha) -----
             const dbAccessLink = document.getElementById('db-access');
             const dbPage = document.getElementById('db-page');
             const mainContent = document.querySelector('main');
@@ -1045,26 +1090,49 @@
             const footer = document.querySelector('footer');
             const dbTableBody = document.querySelector('#db-table tbody');
             const dbErrorMessage = document.getElementById('db-error-message');
-            const correctPassword = "Lima@321"; // A senha está hardcoded para fins de demonstração. Em um site real, use autenticação segura.
+            const passwordFormContainer = document.getElementById('password-form-container');
+            const dbPasswordForm = document.getElementById('db-password-form');
+            const dbPasswordInput = document.getElementById('db-password');
+            const dbTableContainer = document.getElementById('db-table-container');
+            const dbBackButton = document.getElementById('db-back-button');
+
+            const correctPassword = "Lima@321"; // SENHA: Lima@321 (apenas para demonstração)
 
             dbAccessLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                const password = prompt("Por favor, digite a senha para acessar o banco de dados:");
+                // Esconde o conteúdo principal
+                mainContent.style.display = 'none';
+                header.style.display = 'none';
+                footer.style.display = 'none';
+                // Mostra a página do DB (inicialmente com o formulário de senha)
+                dbPage.style.display = 'block';
+                passwordFormContainer.style.display = 'block';
+                dbTableContainer.style.display = 'none'; // Garante que a tabela esteja oculta
+                dbErrorMessage.style.display = 'none'; // Esconde qualquer erro anterior
+                dbPasswordInput.value = ''; // Limpa o campo de senha
+            });
 
-                if (password === correctPassword) {
-                    mainContent.style.display = 'none'; // Oculta o conteúdo principal
-                    header.style.display = 'none'; // Oculta o header
-                    footer.style.display = 'none'; // Oculta o footer
-                    dbPage.style.display = 'block'; // Mostra a página do DB
-                    dbErrorMessage.style.display = 'none'; // Esconde qualquer mensagem de erro anterior
+            dbPasswordForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const enteredPassword = dbPasswordInput.value;
 
-                    // Carrega e exibe os e-mails
-                    loadEmailsToTable();
-                } else if (password !== null) { // Se o usuário não cancelou o prompt
-                    dbErrorMessage.style.display = 'block';
+                if (enteredPassword === correctPassword) {
+                    passwordFormContainer.style.display = 'none'; // Oculta o formulário de senha
+                    dbTableContainer.style.display = 'block'; // Mostra a tabela de e-mails
+                    loadEmailsToTable(); // Carrega os e-mails
+                } else {
                     dbErrorMessage.textContent = 'Senha incorreta. Tente novamente.';
+                    dbErrorMessage.style.display = 'block';
+                    dbPasswordInput.value = ''; // Limpa o campo de senha
                     setTimeout(() => dbErrorMessage.style.display = 'none', 3000);
                 }
+            });
+
+            dbBackButton.addEventListener('click', () => {
+                dbPage.style.display = 'none'; // Oculta a página do DB
+                mainContent.style.display = 'block'; // Mostra o conteúdo principal
+                header.style.display = 'block'; // Mostra o header
+                footer.style.display = 'block'; // Mostra o footer
             });
 
             function loadEmailsToTable() {
