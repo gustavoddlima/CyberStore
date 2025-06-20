@@ -207,28 +207,6 @@
             background-position: center;
         }
 
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 2;
-        }
-
-        .carousel-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-        }
-
-        .carousel-indicator.active {
-            background-color: var(--primary-color);
-        }
-
         /* Destaques da Semana */
         .highlight-grid-section {
             background-color: var(--background-light);
@@ -250,6 +228,8 @@
             padding: 20px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform var(--transition-speed) ease;
+            width: 100%;
+            max-width: 300px;
         }
 
         .product-card:hover {
@@ -270,6 +250,10 @@
             font-size: 1.3em;
             margin-bottom: 15px;
             color: var(--secondary-color);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .product-card .btn-secondary {
@@ -321,6 +305,10 @@
             font-weight: bold;
             color: var(--secondary-color);
             margin-bottom: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
         }
 
         .countdown {
@@ -758,18 +746,14 @@
                 display: block;
             }
 
-            .highlight-grid {
-                grid-template-columns: 1fr;
+            .highlight-grid, .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
             }
 
             .product-card {
-                width: 90%;
-                max-width: 300px;
-                margin: 0 auto;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
+                max-width: 100%;
+                padding: 15px;
             }
 
             .banner-grid {
@@ -883,9 +867,6 @@
             <div class="carousel">
                 <div class="carousel-inner" id="carouselInner">
                     <!-- Imagens do carrossel serão adicionadas dinamicamente -->
-                </div>
-                <div class="carousel-indicators" id="carouselIndicators">
-                    <!-- Indicadores serão adicionados dinamicamente -->
                 </div>
             </div>
         </section>
@@ -1351,24 +1332,15 @@
 
             function renderCarousel(images) {
                 const carouselInner = document.getElementById('carouselInner');
-                const carouselIndicators = document.getElementById('carouselIndicators');
                 
                 carouselInner.innerHTML = '';
-                carouselIndicators.innerHTML = '';
                 
-                images.forEach((image, index) => {
+                images.forEach((image) => {
                     // Adicionar slide
                     const slide = document.createElement('div');
                     slide.className = 'carousel-item';
                     slide.style.backgroundImage = `url('${image.url}')`;
                     carouselInner.appendChild(slide);
-                    
-                    // Adicionar indicador
-                    const indicator = document.createElement('div');
-                    indicator.className = 'carousel-indicator';
-                    if (index === 0) indicator.classList.add('active');
-                    indicator.addEventListener('click', () => goToSlide(index));
-                    carouselIndicators.appendChild(indicator);
                 });
                 
                 // Iniciar autoplay
@@ -1382,30 +1354,18 @@
 
             function nextSlide() {
                 const carouselInner = document.getElementById('carouselInner');
-                const indicators = document.querySelectorAll('.carousel-indicator');
                 const slides = document.querySelectorAll('.carousel-item');
                 
                 currentSlide = (currentSlide + 1) % slides.length;
                 carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
-                });
             }
 
-            function goToSlide(index) {
-                const carouselInner = document.getElementById('carouselInner');
-                const indicators = document.querySelectorAll('.carousel-indicator');
-                
-                currentSlide = index;
-                carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                indicators.forEach((indicator, i) => {
-                    indicator.classList.toggle('active', i === currentSlide);
-                });
-                
-                // Reiniciar o intervalo
-                startCarousel();
+            // Função para limitar texto com ellipsis
+            function limitText(text, maxLength) {
+                if (text.length > maxLength) {
+                    return text.substring(0, maxLength) + '...';
+                }
+                return text;
             }
 
             // Renderização de produtos
@@ -1432,7 +1392,7 @@
                         productCard.classList.add('product-card');
                         productCard.innerHTML = `
                             <img src="${product.image}" alt="${product.name}">
-                            <h3>${product.name}</h3>
+                            <h3>${limitText(product.name, 30)}</h3>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
                         `;
                         productGrid.appendChild(productCard);
@@ -1455,7 +1415,7 @@
                         productCard.classList.add('product-card');
                         productCard.innerHTML = `
                             <img src="${product.image}" alt="${product.name}">
-                            <h3>${product.name}</h3>
+                            <h3>${limitText(product.name, 30)}</h3>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
                         `;
                         highlightGrid.appendChild(productCard);
@@ -1479,7 +1439,7 @@
                         const countdownId = `countdown-${product.id}`;
                         promoItem.innerHTML = `
                             <img src="${product.image}" alt="${product.name}">
-                            <p>${product.name}</p>
+                            <p>${limitText(product.name, 30)}</p>
                             <div class="countdown" id="${countdownId}">Termina em: <span>24h 00m 00s</span></div>
                             <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Aproveitar</a>
                         `;
@@ -1737,7 +1697,7 @@
                     products.forEach(product => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
-                            <td>${product.name}</td>
+                            <td>${limitText(product.name, 30)}</td>
                             <td>${getCategoryName(product.category)}</td>
                             <td>${product.isFeatured ? 'Sim' : 'Não'}</td>
                             <td>${product.isPromo ? 'Sim' : 'Não'}</td>
