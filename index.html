@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberStore - Eletrônicos e Tecnologia</title>
     <meta name="description" content="CyberStore: As melhores ofertas em eletrônicos e tecnologia. Encontre fones de ouvido, smartwatches e mais!">
-    <meta name="keywords" content="eletrônicos baratos, ofertas de tecnologia, fones de ouvido, smartwatches, carregadores, redes de computadores, acessórios tech, Amazon, afiliado">
+    <meta name="keywords" content="eletrônicos baratos, ofertas de tecnologia, fones de ouvido, smartwatches, carregadores, fotografia, acessórios tech, Amazon, afiliado">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Variáveis CSS */
         :root {
-            --primary-color: #8A2BE2; /* Azul Violeta (Roxo) */
-            --secondary-color: #000000; /* Preto para texto em fundo branco */
-            --background-light: #FFFFFF; /* Branco */
+            --primary-color: #FFD700; /* Amarelo apenas para botões */
+            --secondary-color: #000000; /* Preto para texto */
+            --background-light: #FFFFFF; /* Branco para fundo */
             --text-light: #000000; /* Preto para texto em fundo branco */
-            --text-dark: #FFFFFF; /* Branco para texto em fundos escuros/primários */
-            --gradient-start: #8A2BE2; /* Roxo */
-            --gradient-end: #BA55D3; /* Roxo Médio Orchid */
+            --text-dark: #000000; /* Preto para texto em fundos claros */
+            --gradient-start: #FFD700; /* Amarelo */
+            --gradient-end: #FFA500; /* Amarelo mais escuro */
             --border-radius: 8px;
             --transition-speed: 0.3s;
         }
@@ -43,13 +43,13 @@
         }
 
         a {
-            color: var(--primary-color);
+            color: var(--secondary-color);
             text-decoration: none;
             transition: color var(--transition-speed);
         }
 
         a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
 
         img {
@@ -77,7 +77,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
         .btn-secondary {
@@ -89,7 +89,7 @@
         .btn-secondary:hover {
             background-color: var(--primary-color);
             color: var(--text-dark);
-            box-shadow: 0 3px 10px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
         }
 
         h1, h2, h3 {
@@ -103,9 +103,7 @@
             font-size: 2.5em;
             margin-top: 40px;
             margin-bottom: 30px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--secondary-color);
         }
 
         section {
@@ -121,8 +119,8 @@
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(138, 43, 226, 0.2);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         header .container {
@@ -134,12 +132,9 @@
         .logo {
             font-size: 2em;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         .nav-list {
@@ -186,52 +181,52 @@
             display: block;
             width: 25px;
             height: 3px;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             margin: 5px 0;
             transition: var(--transition-speed);
         }
 
-        /* Hero Banner */
-        .hero-banner {
-            background: url('imagens/fundo.png') no-repeat center center/cover;
-            color: var(--text-dark);
-            text-align: center;
-            padding: 100px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
+        /* Carrossel */
+        .carousel {
             position: relative;
-        }
-
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(2px);
         }
 
-        .hero-banner .container {
-            position: relative;
-            z-index: 1;
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero-banner h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
-            color: var(--text-dark);
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 2;
         }
 
-        .hero-banner p {
-            font-size: 1.4em;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            color: var(--text-dark);
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .carousel-indicator.active {
+            background-color: var(--primary-color);
         }
 
         /* Destaques da Semana */
@@ -253,13 +248,13 @@
             overflow: hidden;
             text-align: center;
             padding: 20px;
-            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform var(--transition-speed) ease;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .product-card img {
@@ -267,14 +262,14 @@
             height: 180px;
             object-fit: contain;
             margin-bottom: 15px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             padding-bottom: 15px;
         }
 
         .product-card h3 {
             font-size: 1.3em;
             margin-bottom: 15px;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .product-card .btn-secondary {
@@ -300,7 +295,7 @@
             background-color: #f8f8f8;
             border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -311,7 +306,7 @@
 
         .promo-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         .promo-item img {
@@ -324,13 +319,13 @@
         .promo-item p {
             font-size: 1.2em;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             margin-bottom: 15px;
         }
 
         .countdown {
             font-size: 1.1em;
-            color: #FFD700;
+            color: var(--primary-color);
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -340,7 +335,7 @@
             background-color: var(--background-light);
             padding: 30px 0;
             text-align: center;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .category-list {
@@ -356,7 +351,7 @@
 
         .category-btn {
             background-color: #f0f0f0;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             border: 1px solid var(--primary-color);
             padding: 10px 20px;
             border-radius: 25px;
@@ -371,7 +366,7 @@
         .category-btn:hover, .category-btn.active {
             background-color: var(--primary-color);
             color: var(--text-dark);
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
             transform: translateY(-2px);
         }
 
@@ -405,7 +400,7 @@
             border-radius: var(--border-radius);
             max-width: 600px;
             margin: 0 auto;
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
         }
 
         .form-group {
@@ -417,7 +412,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .form-group input[type="text"],
@@ -428,7 +423,7 @@
         .form-group input[type="file"] {
             width: 100%;
             padding: 12px;
-            border: 1px solid var(--primary-color);
+            border: 1px solid #ddd;
             border-radius: 5px;
             background-color: #ffffff;
             color: var(--secondary-color);
@@ -444,7 +439,7 @@
         .form-group input[type="file"]:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
 
         .form-group input::placeholder {
@@ -493,7 +488,7 @@
             color: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 30px 0;
-            border-top: 1px solid rgba(138, 43, 226, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         footer p {
@@ -527,14 +522,14 @@
 
         #db-page h2 {
             margin-bottom: 30px;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         #password-form-container {
             background-color: #f8f8f8;
             padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
             max-width: 400px;
             margin: 0 auto 30px;
             display: block;
@@ -544,13 +539,13 @@
             display: block;
             margin-bottom: 10px;
             font-weight: bold;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         #password-form-container input[type="password"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid var(--primary-color);
+            border: 1px solid #ddd;
             border-radius: 5px;
             margin-bottom: 15px;
             font-size: 1em;
@@ -565,7 +560,7 @@
             background-color: #f8f8f8;
             padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
             overflow-x: auto;
             display: none;
         }
@@ -623,7 +618,7 @@
             background-color: #f8f8f8;
             padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px;
         }
 
@@ -631,7 +626,7 @@
             background-color: #f8f8f8;
             padding: 30px;
             border-radius: var(--border-radius);
-            box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
         }
 
         #product-list {
@@ -643,11 +638,12 @@
             padding: 12px 15px;
             border: 1px solid #e0e0e0;
             text-align: left;
+            color: var(--secondary-color);
         }
 
         #product-list th {
             background-color: var(--primary-color);
-            color: white;
+            color: var(--text-dark);
         }
 
         #product-list tr:nth-child(even) {
@@ -682,14 +678,59 @@
             margin-right: 5px;
         }
 
+        .edit-btn {
+            background-color: var(--primary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all var(--transition-speed);
+        }
+
+        .edit-btn:hover {
+            background-color: #FFC000;
+        }
+
+        /* Estilos para o modal de edição */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: #f8f8f8;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            color: var(--secondary-color);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
         /* Media Queries para Responsividade */
         @media (max-width: 768px) {
-            .hero-banner h1 {
-                font-size: 2.5em;
-            }
-
-            .hero-banner p {
-                font-size: 1.1em;
+            .carousel {
+                height: 400px;
             }
 
             .nav-list {
@@ -764,6 +805,11 @@
                 flex-direction: column;
                 gap: 10px;
             }
+
+            .modal-content {
+                margin: 20px auto;
+                padding: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -777,6 +823,10 @@
 
             .logo {
                 font-size: 1.5em;
+            }
+
+            .carousel {
+                height: 300px;
             }
 
             .btn-primary, .btn-secondary {
@@ -801,6 +851,11 @@
                 padding: 6px 8px;
                 font-size: 0.8em;
             }
+
+            .modal-content {
+                margin: 10px auto;
+                padding: 15px;
+            }
         }
     </style>
 </head>
@@ -824,11 +879,14 @@
     </header>
 
     <main>
-        <section id="home" class="hero-banner">
-            <div class="container">
-                <h1>Ofertas Exclusivas CyberStore</h1>
-                <p>Tecnologia de ponta com preços incríveis! Aproveite.</p>
-                <a href="#produtos-section" class="btn-primary">Ver Produtos</a>
+        <section id="home">
+            <div class="carousel">
+                <div class="carousel-inner" id="carouselInner">
+                    <!-- Imagens do carrossel serão adicionadas dinamicamente -->
+                </div>
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicadores serão adicionados dinamicamente -->
+                </div>
             </div>
         </section>
 
@@ -858,9 +916,9 @@
                     <button class="category-btn" data-category="fones">Fones de Ouvido</button>
                     <button class="category-btn" data-category="smartwatches">Smartwatches</button>
                     <button class="category-btn" data-category="carregadores">Carregadores</button>
-                    <button class="category-btn" data-category="notebooks">Notebooks</button>
+                    <button class="category-btn" data-category="fotografia">Fotografia</button>
                     <button class="category-btn" data-category="perifericos">Periféricos</button>
-                    <button class="category-btn" data-category="redes">Fotografia</button>
+                    <button class="category-btn" data-category="redes">Redes de Computadores</button>
                 </div>
             </div>
         </section>
@@ -944,7 +1002,7 @@
         <div class="container">
             <h2>Administração de Produtos</h2>
             
-            <div id="product-password-form-container" style="background-color: #f8f8f8; padding: 30px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(138, 43, 226, 0.2); max-width: 400px; margin: 0 auto 30px;">
+            <div id="product-password-form-container" style="background-color: #f8f8f8; padding: 30px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); max-width: 400px; margin: 0 auto 30px;">
                 <p>Por favor, digite a senha para acessar.</p>
                 <form id="product-password-form">
                     <div class="form-group">
@@ -958,7 +1016,7 @@
             
             <div id="product-admin-container" style="display: none;">
                 <form id="add-product-form">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Adicionar Novo Produto</h3>
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Adicionar Novo Produto</h3>
                     
                     <div class="form-group">
                         <label for="product-name">Nome do Produto:</label>
@@ -972,9 +1030,9 @@
                             <option value="fones">Fones de Ouvido</option>
                             <option value="smartwatches">Smartwatches</option>
                             <option value="carregadores">Carregadores</option>
-                            <option value="notebooks">Notebooks</option>
+                            <option value="fotografia">Fotografia</option>
                             <option value="perifericos">Periféricos</option>
-                            <option value="redes">Fotografia</option>
+                            <option value="redes">Redes de Computadores</option>
                         </select>
                     </div>
                     
@@ -990,8 +1048,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="product-image">Imagem do Produto:</label>
-                        <input type="file" id="product-image" accept="image/*" required>
+                        <label for="product-image-url">URL da Imagem do Produto:</label>
+                        <input type="url" id="product-image-url" required placeholder="https://exemplo.com/imagem.jpg">
                     </div>
                     
                     <div class="form-group">
@@ -1004,7 +1062,7 @@
                 </form>
                 
                 <div id="product-list-container">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">Produtos Cadastrados</h3>
+                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Produtos Cadastrados</h3>
                     <table id="product-list">
                         <thead>
                             <tr>
@@ -1025,6 +1083,58 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal de Edição de Produto -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditModal()">&times;</span>
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Editar Produto</h3>
+            <form id="edit-product-form">
+                <input type="hidden" id="edit-product-id">
+                
+                <div class="form-group">
+                    <label for="edit-product-name">Nome do Produto:</label>
+                    <input type="text" id="edit-product-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-product-category">Categoria:</label>
+                    <select id="edit-product-category" required>
+                        <option value="">Selecione...</option>
+                        <option value="fones">Fones de Ouvido</option>
+                        <option value="smartwatches">Smartwatches</option>
+                        <option value="carregadores">Carregadores</option>
+                        <option value="fotografia">Fotografia</option>
+                        <option value="perifericos">Periféricos</option>
+                        <option value="redes">Redes de Computadores</option>
+                    </select>
+                </div>
+                
+                <div class="feature-checkboxes">
+                    <div class="feature-checkbox">
+                        <input type="checkbox" id="edit-featured-product">
+                        <label for="edit-featured-product">Destaque da Semana</label>
+                    </div>
+                    <div class="feature-checkbox">
+                        <input type="checkbox" id="edit-promo-product">
+                        <label for="edit-promo-product">Promoção Relâmpago</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-product-image-url">URL da Imagem do Produto:</label>
+                    <input type="url" id="edit-product-image-url" required placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                
+                <div class="form-group">
+                    <label for="edit-product-link">Link Afiliado Amazon:</label>
+                    <input type="url" id="edit-product-link" required placeholder="https://amzn.to/...">
+                </div>
+                
+                <button type="submit" class="btn-primary">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1048,7 +1158,7 @@
 
             // Configuração do IndexedDB
             const dbName = "CyberStoreDB";
-            const dbVersion = 4; // Incrementado para refletir as mudanças no schema
+            const dbVersion = 5; // Incrementado para refletir as mudanças no schema
             
             let db;
             const request = indexedDB.open(dbName, dbVersion);
@@ -1066,12 +1176,17 @@
                     store.createIndex("isFeatured", "isFeatured", { unique: false });
                     store.createIndex("isPromo", "isPromo", { unique: false });
                 }
+
+                if (!db.objectStoreNames.contains('carouselImages')) {
+                    db.createObjectStore("carouselImages", { keyPath: "id", autoIncrement: true });
+                }
             };
             
             request.onsuccess = (event) => {
                 db = event.target.result;
                 console.log("Banco de dados aberto com sucesso");
                 loadInitialProducts();
+                loadCarouselImages();
             };
             
             request.onerror = (event) => {
@@ -1092,6 +1207,37 @@
                 
                 request.onerror = (event) => {
                     console.error("Erro ao adicionar produto:", event.target.error);
+                };
+            }
+            
+            function updateProduct(product, callback) {
+                const transaction = db.transaction(["products"], "readwrite");
+                const store = transaction.objectStore("products");
+                
+                const request = store.put(product);
+                
+                request.onsuccess = () => {
+                    console.log("Produto atualizado com sucesso");
+                    if (callback) callback();
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao atualizar produto:", event.target.error);
+                };
+            }
+            
+            function getProduct(id, callback) {
+                const transaction = db.transaction(["products"], "readonly");
+                const store = transaction.objectStore("products");
+                
+                const request = store.get(id);
+                
+                request.onsuccess = () => {
+                    callback(request.result);
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao obter produto:", event.target.error);
                 };
             }
             
@@ -1126,7 +1272,39 @@
                 };
             }
 
-            // Carregar produtos iniciais
+            // Funções para manipulação do carrossel
+            function addCarouselImage(imageUrl, callback) {
+                const transaction = db.transaction(["carouselImages"], "readwrite");
+                const store = transaction.objectStore("carouselImages");
+                
+                const request = store.add({ url: imageUrl });
+                
+                request.onsuccess = () => {
+                    console.log("Imagem do carrossel adicionada com sucesso");
+                    if (callback) callback();
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao adicionar imagem do carrossel:", event.target.error);
+                };
+            }
+            
+            function getAllCarouselImages(callback) {
+                const transaction = db.transaction(["carouselImages"], "readonly");
+                const store = transaction.objectStore("carouselImages");
+                
+                const request = store.getAll();
+                
+                request.onsuccess = () => {
+                    callback(request.result);
+                };
+                
+                request.onerror = (event) => {
+                    console.error("Erro ao obter imagens do carrossel:", event.target.error);
+                };
+            }
+
+            // Carregar produtos iniciais e imagens do carrossel
             function loadInitialProducts() {
                 getAllProducts((products) => {
                     if (products.length === 0) {
@@ -1145,6 +1323,91 @@
                 });
             }
 
+            function loadCarouselImages() {
+                getAllCarouselImages((images) => {
+                    if (images.length === 0) {
+                        // Adicionar imagens padrão se não houver nenhuma
+                        const defaultImages = [
+                            { url: 'https://via.placeholder.com/1200x500?text=CyberStore+1' },
+                            { url: 'https://via.placeholder.com/1200x500?text=CyberStore+2' },
+                            { url: 'https://via.placeholder.com/1200x500?text=CyberStore+3' }
+                        ];
+                        
+                        defaultImages.forEach(img => {
+                            addCarouselImage(img.url);
+                        });
+                        
+                        // Recarregar após adicionar as imagens padrão
+                        setTimeout(loadCarouselImages, 100);
+                    } else {
+                        renderCarousel(images);
+                    }
+                });
+            }
+
+            // Renderização do carrossel
+            let currentSlide = 0;
+            let carouselInterval;
+
+            function renderCarousel(images) {
+                const carouselInner = document.getElementById('carouselInner');
+                const carouselIndicators = document.getElementById('carouselIndicators');
+                
+                carouselInner.innerHTML = '';
+                carouselIndicators.innerHTML = '';
+                
+                images.forEach((image, index) => {
+                    // Adicionar slide
+                    const slide = document.createElement('div');
+                    slide.className = 'carousel-item';
+                    slide.style.backgroundImage = `url('${image.url}')`;
+                    carouselInner.appendChild(slide);
+                    
+                    // Adicionar indicador
+                    const indicator = document.createElement('div');
+                    indicator.className = 'carousel-indicator';
+                    if (index === 0) indicator.classList.add('active');
+                    indicator.addEventListener('click', () => goToSlide(index));
+                    carouselIndicators.appendChild(indicator);
+                });
+                
+                // Iniciar autoplay
+                startCarousel();
+            }
+
+            function startCarousel() {
+                clearInterval(carouselInterval);
+                carouselInterval = setInterval(nextSlide, 5000);
+            }
+
+            function nextSlide() {
+                const carouselInner = document.getElementById('carouselInner');
+                const indicators = document.querySelectorAll('.carousel-indicator');
+                const slides = document.querySelectorAll('.carousel-item');
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                const carouselInner = document.getElementById('carouselInner');
+                const indicators = document.querySelectorAll('.carousel-indicator');
+                
+                currentSlide = index;
+                carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === currentSlide);
+                });
+                
+                // Reiniciar o intervalo
+                startCarousel();
+            }
+
             // Renderização de produtos
             const productGrid = document.getElementById('productGrid');
             const highlightGrid = document.getElementById('highlightGrid');
@@ -1160,7 +1423,7 @@
                     );
                     
                     if (filteredProducts.length === 0) {
-                        productGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhum produto encontrado nesta categoria.</p>';
+                        productGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhum produto encontrado nesta categoria.</p>';
                         return;
                     }
                     
@@ -1183,7 +1446,7 @@
                     const highlightProducts = products.filter(p => p.isFeatured);
                     
                     if (highlightProducts.length === 0) {
-                        highlightGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhum destaque esta semana.</p>';
+                        highlightGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhum destaque esta semana.</p>';
                         return;
                     }
                     
@@ -1206,7 +1469,7 @@
                     const promoProducts = products.filter(p => p.isPromo);
                     
                     if (promoProducts.length === 0) {
-                        promoGrid.innerHTML = '<p style="text-align: center; color: var(--primary-color);">Nenhuma promoção no momento.</p>';
+                        promoGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhuma promoção no momento.</p>';
                         return;
                     }
                     
@@ -1387,6 +1650,8 @@
             const productList = document.getElementById('product-list');
             const productBackButton = document.getElementById('product-back-button');
             const productMessage = document.getElementById('product-message');
+            const editModal = document.getElementById('editModal');
+            const editProductForm = document.getElementById('edit-product-form');
 
             productAdminLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1426,42 +1691,32 @@
             addProductForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                const imageFile = document.getElementById('product-image').files[0];
-                if (!imageFile) {
-                    alert("Por favor, selecione uma imagem para o produto.");
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    const product = {
-                        name: document.getElementById('product-name').value,
-                        category: document.getElementById('product-category').value,
-                        isFeatured: document.getElementById('featured-product').checked,
-                        isPromo: document.getElementById('promo-product').checked,
-                        image: event.target.result, // Armazena a imagem como base64
-                        amazonLink: document.getElementById('product-link').value
-                    };
-                    
-                    addProduct(product, () => {
-                        addProductForm.reset();
-                        
-                        productMessage.textContent = "Produto adicionado com sucesso!";
-                        productMessage.style.display = "block";
-                        productMessage.style.backgroundColor = "#28a745";
-                        productMessage.style.color = "white";
-                        
-                        loadProductsToAdmin();
-                        renderProducts();
-                        renderHighlightProducts();
-                        renderPromoProducts();
-                        
-                        setTimeout(() => {
-                            productMessage.style.display = "none";
-                        }, 3000);
-                    });
+                const product = {
+                    name: document.getElementById('product-name').value,
+                    category: document.getElementById('product-category').value,
+                    isFeatured: document.getElementById('featured-product').checked,
+                    isPromo: document.getElementById('promo-product').checked,
+                    image: document.getElementById('product-image-url').value,
+                    amazonLink: document.getElementById('product-link').value
                 };
-                reader.readAsDataURL(imageFile);
+                
+                addProduct(product, () => {
+                    addProductForm.reset();
+                    
+                    productMessage.textContent = "Produto adicionado com sucesso!";
+                    productMessage.style.display = "block";
+                    productMessage.style.backgroundColor = "#28a745";
+                    productMessage.style.color = "white";
+                    
+                    loadProductsToAdmin();
+                    renderProducts();
+                    renderHighlightProducts();
+                    renderPromoProducts();
+                    
+                    setTimeout(() => {
+                        productMessage.style.display = "none";
+                    }, 3000);
+                });
             });
 
             function loadProductsToAdmin() {
@@ -1487,6 +1742,7 @@
                             <td>${product.isFeatured ? 'Sim' : 'Não'}</td>
                             <td>${product.isPromo ? 'Sim' : 'Não'}</td>
                             <td>
+                                <button class="edit-btn" onclick="openEditModal(${product.id})">Editar</button>
                                 <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9em;" onclick="deleteProductFromList(${product.id})">Excluir</button>
                             </td>
                         `;
@@ -1500,12 +1756,62 @@
                     'fones': 'Fones de Ouvido',
                     'smartwatches': 'Smartwatches',
                     'carregadores': 'Carregadores',
-                    'notebooks': 'Notebooks',
+                    'fotografia': 'Fotografia',
                     'perifericos': 'Periféricos',
                     'redes': 'Redes de Computadores'
                 };
                 return categories[categoryKey] || categoryKey;
             }
+
+            window.openEditModal = function(id) {
+                getProduct(id, (product) => {
+                    document.getElementById('edit-product-id').value = product.id;
+                    document.getElementById('edit-product-name').value = product.name;
+                    document.getElementById('edit-product-category').value = product.category;
+                    document.getElementById('edit-featured-product').checked = product.isFeatured;
+                    document.getElementById('edit-promo-product').checked = product.isPromo;
+                    document.getElementById('edit-product-image-url').value = product.image;
+                    document.getElementById('edit-product-link').value = product.amazonLink;
+                    
+                    editModal.style.display = 'block';
+                });
+            };
+
+            window.closeEditModal = function() {
+                editModal.style.display = 'none';
+            };
+
+            editProductForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const product = {
+                    id: parseInt(document.getElementById('edit-product-id').value),
+                    name: document.getElementById('edit-product-name').value,
+                    category: document.getElementById('edit-product-category').value,
+                    isFeatured: document.getElementById('edit-featured-product').checked,
+                    isPromo: document.getElementById('edit-promo-product').checked,
+                    image: document.getElementById('edit-product-image-url').value,
+                    amazonLink: document.getElementById('edit-product-link').value
+                };
+                
+                updateProduct(product, () => {
+                    closeEditModal();
+                    
+                    productMessage.textContent = "Produto atualizado com sucesso!";
+                    productMessage.style.display = "block";
+                    productMessage.style.backgroundColor = "#28a745";
+                    productMessage.style.color = "white";
+                    
+                    loadProductsToAdmin();
+                    renderProducts();
+                    renderHighlightProducts();
+                    renderPromoProducts();
+                    
+                    setTimeout(() => {
+                        productMessage.style.display = "none";
+                    }, 3000);
+                });
+            });
 
             window.deleteProductFromList = function(id) {
                 if (confirm("Tem certeza que deseja excluir este produto?")) {
@@ -1517,6 +1823,13 @@
                     });
                 }
             };
+
+            // Fechar o modal ao clicar fora dele
+            window.addEventListener('click', (e) => {
+                if (e.target === editModal) {
+                    closeEditModal();
+                }
+            });
         });
     </script>
 </body>
