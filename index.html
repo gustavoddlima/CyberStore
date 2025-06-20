@@ -7,939 +7,7 @@
     <meta name="description" content="CyberStore: As melhores ofertas em eletrônicos e tecnologia. Encontre fones de ouvido, smartwatches e mais!">
     <meta name="keywords" content="eletrônicos baratos, ofertas de tecnologia, fones de ouvido, smartwatches, carregadores, fotografia, acessórios tech, Amazon, afiliado">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Variáveis CSS */
-        :root {
-            --primary-color: #FFD700;
-            --secondary-color: #000000;
-            --background-light: #FFFFFF;
-            --text-light: #000000;
-            --text-dark: #000000;
-            --gradient-start: #FFD700;
-            --gradient-end: #FFA500;
-            --border-radius: 8px;
-            --transition-speed: 0.3s;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Oxanium', sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-light);
-            line-height: 1.4;
-            overflow-x: hidden;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* CARROSSEL AJUSTADO */
-        .carousel-container {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
-            background-color: #000;
-        }
-
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .carousel-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* Desktop - Altura fixa */
-        @media (min-width: 769px) {
-            .carousel-container {
-                height: 500px;
-            }
-            
-            .carousel-img {
-                height: 500px;
-                object-position: center center;
-            }
-        }
-
-        /* Mobile - Proporção 16:9 */
-        @media (max-width: 768px) {
-            .carousel-container {
-                height: 0;
-                padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            }
-            
-            .carousel-img {
-                position: absolute;
-                height: 100%;
-                object-fit: contain;
-                background-color: #000;
-            }
-        }
-
-        /* Restante do CSS original */
-        a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color var(--transition-speed);
-        }
-
-        a:hover {
-            color: var(--primary-color);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .btn-primary, .btn-secondary {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all var(--transition-speed) ease;
-            text-align: center;
-            font-size: 0.9em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: var(--text-dark);
-            border: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: #FFC000;
-            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
-        }
-
-        h1, h2, h3 {
-            margin-bottom: 15px;
-            font-weight: normal;
-            text-align: center;
-            color: var(--secondary-color);
-        }
-
-        h2 {
-            font-size: 1.8em;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        section {
-            padding: 40px 0;
-            position: relative;
-        }
-
-        header {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: normal;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-list {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-list li {
-            margin-left: 20px;
-        }
-
-        .nav-list a {
-            color: var(--secondary-color);
-            font-weight: normal;
-            font-size: 1em;
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        .nav-list a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            left: 0;
-            bottom: 0;
-            transition: width var(--transition-speed) ease-in-out;
-        }
-
-        .nav-list a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger-menu {
-            display: none;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .hamburger-menu .bar {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background-color: var(--secondary-color);
-            margin: 4px 0;
-            transition: var(--transition-speed);
-        }
-
-        .highlight-grid-section {
-            background-color: var(--background-light);
-            padding: 40px 0;
-        }
-
-        .highlight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            justify-items: center;
-        }
-
-        .product-card {
-            background-color: #f8f8f8;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            text-align: center;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform var(--transition-speed) ease;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            margin-bottom: 12px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            padding-bottom: 12px;
-        }
-
-        .product-card h3 {
-            font-size: 1.1em;
-            margin-bottom: 12px;
-            color: var(--secondary-color);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-            font-weight: normal;
-        }
-
-        .product-card .btn-secondary {
-            margin-top: 12px;
-            width: 100%;
-            padding: 8px 15px;
-            font-size: 0.85em;
-        }
-
-        .promotion-banners {
-            background-color: var(--background-light);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .banner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .promo-item {
-            background-color: #f8f8f8;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            transition: transform var(--transition-speed) ease;
-        }
-
-        .promo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .promo-item img {
-            width: 100%;
-            height: 160px;
-            object-fit: contain;
-            margin-bottom: 15px;
-        }
-
-        .promo-item p {
-            font-size: 1em;
-            font-weight: normal;
-            color: var(--secondary-color);
-            margin-bottom: 12px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-        }
-
-        .countdown {
-            font-size: 0.95em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-weight: normal;
-        }
-
-        .product-categories {
-            background-color: var(--background-light);
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .category-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .category-btn {
-            background-color: #f0f0f0;
-            color: var(--secondary-color);
-            border: 1px solid var(--primary-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all var(--transition-speed);
-            flex-grow: 1;
-            min-width: 100px;
-            text-align: center;
-            font-weight: normal;
-        }
-
-        .category-btn:hover, .category-btn.active {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .product-grid-section {
-            padding: 40px 0;
-            background-color: var(--background-light);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .contact-form-section {
-            background-color: var(--background-light);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .contact-form-section h2 {
-            margin-bottom: 30px;
-            color: var(--secondary-color);
-        }
-
-        .contact-form {
-            background-color: #f8f8f8;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            max-width: 500px;
-            margin: 0 auto;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: normal;
-            color: var(--secondary-color);
-            font-size: 0.95em;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="password"],
-        .form-group input[type="url"],
-        .form-group select,
-        .form-group input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #ffffff;
-            color: var(--secondary-color);
-            font-size: 0.95em;
-            transition: border-color var(--transition-speed);
-        }
-
-        .form-group input[type="text"]:focus,
-        .form-group input[type="email"]:focus,
-        .form-group input[type="password"]:focus,
-        .form-group input[type="url"]:focus,
-        .form-group select:focus,
-        .form-group input[type="file"]:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
-        }
-
-        .form-group input::placeholder {
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 0.9em;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            justify-content: center;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary-color);
-        }
-
-        .checkbox-group label {
-            font-size: 0.9em;
-            color: var(--secondary-color);
-        }
-
-        .contact-form button {
-            width: 100%;
-            padding: 12px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        #confirmation-message {
-            margin-top: 15px;
-            padding: 12px;
-            background-color: #28a745;
-            color: white;
-            border-radius: var(--border-radius);
-            display: none;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        footer {
-            background-color: #f0f0f0;
-            color: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            padding: 25px 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            margin-bottom: 8px;
-            font-size: 0.85em;
-        }
-
-        .hidden-db-link {
-            cursor: pointer;
-            color: rgba(0, 0, 0, 0.5);
-            font-size: 0.75em;
-            display: block;
-            margin-top: 8px;
-        }
-
-        .hidden-db-link:hover {
-            color: var(--primary-color);
-        }
-
-        #db-page {
-            display: none;
-            padding: 40px 0;
-            background-color: var(--background-light);
-            min-height: 100vh;
-        }
-
-        #db-page .container {
-            text-align: center;
-        }
-
-        #db-page h2 {
-            margin-bottom: 25px;
-            color: var(--secondary-color);
-        }
-
-        #password-form-container {
-            background-color: #f8f8f8;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            max-width: 350px;
-            margin: 0 auto 25px;
-            display: block;
-        }
-
-        #password-form-container label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: normal;
-            color: var(--secondary-color);
-            font-size: 0.95em;
-        }
-
-        #password-form-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 12px;
-            font-size: 0.95em;
-            color: var(--secondary-color);
-        }
-
-        #password-form-container button {
-            width: 100%;
-            padding: 10px;
-        }
-
-        #db-table-container {
-            background-color: #f8f8f8;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            overflow-x: auto;
-            display: none;
-        }
-
-        #db-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 0.9em;
-        }
-
-        #db-table th, #db-table td {
-            padding: 10px 12px;
-            border: 1px solid #e0e0e0;
-            text-align: left;
-            color: var(--secondary-color);
-        }
-
-        #db-table th {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            font-weight: normal;
-            text-transform: uppercase;
-            font-size: 0.85em;
-        }
-
-        #db-table tr:nth-child(even) {
-            background-color: #f0f0f0;
-        }
-
-        #db-table tr:hover {
-            background-color: #e8e8e8;
-        }
-
-        #db-error-message {
-            color: #ff4d4d;
-            margin-top: 8px;
-            font-weight: normal;
-            display: none;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        #product-admin-page {
-            display: none;
-            padding: 40px 0;
-            background-color: var(--background-light);
-            min-height: 100vh;
-        }
-
-        #product-admin-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        #add-product-form {
-            background-color: #f8f8f8;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin-bottom: 25px;
-        }
-
-        #product-list-container {
-            background-color: #f8f8f8;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        #product-list {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9em;
-        }
-
-        #product-list th, #product-list td {
-            padding: 10px 12px;
-            border: 1px solid #e0e0e0;
-            text-align: left;
-            color: var(--secondary-color);
-        }
-
-        #product-list th {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            font-weight: normal;
-            font-size: 0.85em;
-        }
-
-        #product-list tr:nth-child(even) {
-            background-color: #f0f0f0;
-        }
-
-        #product-list tr:hover {
-            background-color: #e8e8e8;
-        }
-
-        #product-message {
-            margin-top: 12px;
-            padding: 10px;
-            border-radius: var(--border-radius);
-            display: none;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        .feature-checkboxes {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-            justify-content: center;
-        }
-
-        .feature-checkbox {
-            display: flex;
-            align-items: center;
-            font-size: 0.9em;
-        }
-
-        .feature-checkbox input {
-            margin-right: 5px;
-        }
-
-        .edit-btn {
-            background-color: var(--primary-color);
-            color: var(--text-dark);
-            border: none;
-            padding: 5px 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 5px;
-            transition: all var(--transition-speed);
-            font-size: 0.85em;
-        }
-
-        .edit-btn:hover {
-            background-color: #FFC000;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background-color: #f8f8f8;
-            margin: 30px auto;
-            padding: 25px;
-            border-radius: var(--border-radius);
-            max-width: 500px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .close-modal {
-            color: var(--secondary-color);
-            float: right;
-            font-size: 24px;
-            font-weight: normal;
-            cursor: pointer;
-        }
-
-        .close-modal:hover {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-            }
-
-            .container {
-                padding: 0 10px;
-            }
-
-            h2 {
-                font-size: 1.5em;
-                margin-top: 25px;
-                margin-bottom: 15px;
-            }
-
-            section {
-                padding: 30px 0;
-            }
-
-            .nav-list {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: rgba(255, 255, 255, 0.95);
-                position: absolute;
-                top: 70px;
-                left: 0;
-                padding: 15px 0;
-                border-top: 1px solid var(--primary-color);
-            }
-
-            .nav-list.active {
-                display: flex;
-            }
-
-            .nav-list li {
-                margin: 8px 0;
-                text-align: center;
-            }
-
-            .hamburger-menu {
-                display: block;
-            }
-
-            .highlight-grid, .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .product-card {
-                padding: 12px;
-                max-width: 100%;
-            }
-
-            .product-card img {
-                height: 120px;
-                margin-bottom: 10px;
-                padding-bottom: 10px;
-            }
-
-            .product-card h3 {
-                font-size: 1em;
-                margin-bottom: 10px;
-            }
-
-            .product-card .btn-secondary {
-                margin-top: 10px;
-                padding: 6px 12px;
-                font-size: 0.8em;
-            }
-
-            .banner-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .promo-item {
-                padding: 12px;
-            }
-
-            .promo-item img {
-                height: 140px;
-                margin-bottom: 12px;
-            }
-
-            .promo-item p {
-                font-size: 0.95em;
-            }
-
-            .countdown {
-                font-size: 0.9em;
-            }
-
-            .category-list {
-                gap: 8px;
-                padding: 0 5px;
-            }
-
-            .category-btn {
-                font-size: 0.8em;
-                padding: 6px 12px;
-                min-width: unset;
-            }
-
-            #add-product-form, #product-list-container {
-                padding: 15px;
-            }
-
-            #product-list th, #product-list td {
-                padding: 8px 10px;
-                font-size: 0.8em;
-            }
-
-            .feature-checkboxes {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .modal-content {
-                margin: 20px 10px;
-                padding: 15px;
-            }
-
-            .edit-btn {
-                padding: 4px 6px;
-                font-size: 0.8em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 13px;
-            }
-
-            .logo {
-                font-size: 1.3em;
-            }
-
-            h2 {
-                font-size: 1.3em;
-            }
-
-            .btn-primary, .btn-secondary {
-                padding: 8px 15px;
-                font-size: 0.8em;
-            }
-
-            .product-card {
-                padding: 10px;
-            }
-
-            .product-card img {
-                height: 100px;
-            }
-
-            .product-card h3 {
-                font-size: 0.95em;
-            }
-
-            .category-btn {
-                font-size: 0.75em;
-                padding: 5px 10px;
-            }
-
-            #product-admin-container {
-                padding: 0 5px;
-            }
-
-            #product-list th, #product-list td {
-                padding: 6px 8px;
-                font-size: 0.75em;
-            }
-
-            .modal-content {
-                margin: 15px 5px;
-                padding: 12px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -961,32 +29,85 @@
     </header>
 
     <main>
-        <section id="home">
-            <div class="carousel-container">
-                <div class="carousel" id="carouselInner">
-                    <!-- Imagens serão adicionadas pelo JavaScript -->
-                </div>
+        <!-- Seção Hero com imagem de fundo e frase -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <h1>As Melhores Ofertas em Tecnologia</h1>
+                <p class="hero-text">Produtos selecionados com os melhores preços do mercado</p>
             </div>
         </section>
 
+        <!-- Destaques da Semana -->
         <section class="highlight-grid-section">
             <div class="container">
                 <h2>Destaques da Semana</h2>
-                <div class="highlight-grid" id="highlightGrid">
-                    <!-- Produtos serão carregados dinamicamente aqui -->
+                <div class="highlight-grid">
+                    <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/51bjAlTBzZL._AC_SL1000_.jpg" alt="Smartwatch Samsung Galaxy Fit3 Display 1.6 Grafite">
+    <h3>Smartwatch Samsung Galaxy Fit3 Display 1.6" Grafite</h3>
+    <a href="https://amzn.to/44o9EUu" target="_blank" class="btn-secondary">Ver na Amazon</a>
+                    </div>
+
+                    <div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/51olNZRjn+L._AC_SL1500_.jpg" alt="JBL Fone de Ouvido On ear Tune 520BT Preto">
+    <h3>JBL, Fone de Ouvido On ear, Tune 520BT - Preto</h3>
+    <a href="https://amzn.to/3G9BOcD" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/41oYXkhMCKL._AC_SL1000_.jpg" alt="Carregador Universal Geonav Ultra Rapido Duo USB-C 20W USB QC 18W Branco">
+    <h3>Geonav Carregador Universal Ultra Rápido Duo</h3>
+    <a href="https://amzn.to/3I5pGK9" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card">
+    <img src="https://m.media-amazon.com/images/I/41dvDHE3bxL._AC_SL1400_.jpg" alt="Power Bank Redmi 10000mAh 2 Saidas USB-A Preto">
+    <h3>Power Bank Redmi 10000mAh 2 Saídas USB-A - Preto</h3>
+    <a href="https://amzn.to/4eaJWGi" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/51IQJbmUwHL._AC_SL1000_.jpg" alt="Teclado Mecânico Gamer Redragon Kumara Pro RGB">
+        <h3>Teclado Redragon Kumara Pro RGB - Switch Marrom</h3>
+        <a href="https://amzn.to/44p3ROq" target="_blank" class="btn-secondary">Ver na Amazon</a>
+    </div>
+
+    <div class="product-card">
+        <img src="https://m.media-amazon.com/images/I/519bjoeFBTL._AC_SL1000_.jpg" alt="Fone Philips Sem Fio TWS Bluetooth 24h Bateria">
+        <h3>Fone Philips TWS Bluetooth - 24h de Bateria</h3>
+        <a href="https://amzn.to/4lgeiJO" target="_blank" class="btn-secondary">Ver na Amazon</a>
+    </div>
+
+    
                 </div>
             </div>
         </section>
 
+        <!-- Promoções Relâmpago -->
         <section class="promotion-banners">
             <div class="container">
                 <h2>Promoções Relâmpago</h2>
-                <div class="banner-grid" id="promoGrid">
-                    <!-- Promoções serão carregadas dinamicamente aqui -->
+                <div class="banner-grid">
+                    <div class="promo-item">
+    <img src="https://m.media-amazon.com/images/I/71yv+fCG-4L._AC_SL1000_.jpg" alt="Câmera Canon EOS Rebel T7 com Lente 18-55mm">
+    <p>Câmera Canon EOS Rebel T7+ EF-S 18-55mm</p>
+    <div class="countdown" id="countdown-canon-t7">Termina em: <span>24h 00m 00s</span></div>
+    <a href="https://amzn.to/4lbROtn" target="_blank" class="btn-secondary">Aproveitar</a>
+</div>
+
+<div class="promo-item">
+    <img src="https://m.media-amazon.com/images/I/61ni3t1ryQL._AC_SL1500_.jpg" alt="Mouse sem fio Logitech MX Master 3S Grafite">
+    <p>Mouse Logitech MX Master 3S Sem Fio - Grafite</p>
+    <div class="countdown" id="countdown-mxmaster3s">Termina em: <span>24h 00m 00s</span></div>
+    <a href="https://amzn.to/4l9VpsF" target="_blank" class="btn-secondary">Aproveitar</a>
+</div>
+
+
                 </div>
             </div>
         </section>
 
+        <!-- Categorias de Produtos -->
         <section id="produtos-section" class="product-categories">
             <div class="container">
                 <h2>Categorias de Produtos</h2>
@@ -1001,35 +122,92 @@
             </div>
         </section>
 
+        <!-- Grid de Produtos -->
         <section class="product-grid-section">
             <div class="container">
-                <div class="product-grid" id="productGrid">
-                    <!-- Produtos serão carregados dinamicamente aqui -->
+                <div class="product-grid">
+                    <div class="product-card" data-category="smartwatches">
+    <img src="https://m.media-amazon.com/images/I/51bjAlTBzZL._AC_SL1000_.jpg" alt="Smartwatch Samsung Galaxy Fit3 Display 1.6 Grafite">
+    <h3>Smartwatch Samsung Galaxy Fit3 Display 1.6" Grafite</h3>
+    <a href="https://amzn.to/44o9EUu" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="fones">
+    <img src="https://m.media-amazon.com/images/I/51olNZRjn+L._AC_SL1500_.jpg" alt="JBL Fone de Ouvido On ear Tune 520BT Preto">
+    <h3>JBL, Fone de Ouvido On ear, Tune 520BT - Preto</h3>
+    <a href="https://amzn.to/3G9BOcD" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="smartwatches">
+    <img src="https://m.media-amazon.com/images/I/51WOvToYRFL._AC_SL1500_.jpg" alt="Xiaomi Smart Band 9 Active versao global">
+    <h3>Xiaomi Smart Band 9 Active (versão global)</h3>
+    <a href="https://amzn.to/464beMr" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="fones">
+    <img src="https://m.media-amazon.com/images/I/51rZ9K0TroL._AC_SL1500_.jpg" alt="Fones de Ouvido Sem Fio Baseus H1i Bowie com Cancelamento de Ruido 70 Horas">
+    <h3>Fones De Ouvido Sem Fio Baseus H1i Bowie com Cancelamento de Ruído 70 Horas</h3>
+    <a href="https://amzn.to/4kjCsm5" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="carregadores">
+    <img src="https://m.media-amazon.com/images/I/41oYXkhMCKL._AC_SL1000_.jpg" alt="Carregador Universal Geonav Ultra Rapido Duo USB-C 20W USB QC 18W Branco">
+    <h3>Geonav Carregador Universal Ultra Rápido Duo</h3>
+    <a href="https://amzn.to/3I5pGK9" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="carregadores">
+    <img src="https://m.media-amazon.com/images/I/41dvDHE3bxL._AC_SL1400_.jpg" alt="Power Bank Redmi 10000mAh 2 Saidas USB-A Preto">
+    <h3>Power Bank Redmi 10000mAh 2 Saídas USB-A - Preto</h3>
+    <a href="https://amzn.to/4eaJWGi" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="fotografia">
+    <img src="https://m.media-amazon.com/images/I/61fShGMPYML._AC_SL1500_.jpg" alt="Tripé Manfrotto Befree Avançado com Cabeça Esférica para Câmeras">
+    <h3>Manfrotto Tripé Befree Avançado com Cabeça Esférica</h3>
+    <a href="https://amzn.to/466Y7Ky" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="fotografia">
+    <img src="https://m.media-amazon.com/images/I/71yv+fCG-4L._AC_SL1000_.jpg" alt="Câmera Canon EOS Rebel T7 com Lente 18-55mm">
+    <h3>Câmera Canon EOS Rebel T7+ EF-S 18-55 f/3.5-5.6 IS II</h3>
+    <a href="https://amzn.to/4lbROtn" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="perifericos">
+    <img src="https://m.media-amazon.com/images/I/61ni3t1ryQL._AC_SL1500_.jpg" alt="Mouse sem fio Logitech MX Master 3S com Sensor Darkfield">
+    <h3>Mouse Logitech MX Master 3S Sem Fio - Grafite</h3>
+    <a href="https://amzn.to/4l9VpsF" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="perifericos">
+    <img src="https://m.media-amazon.com/images/I/51IQJbmUwHL._AC_SL1000_.jpg" alt="Teclado Mecânico Gamer Redragon Kumara Pro RGB Switch Marrom">
+    <h3>Teclado Mecânico Gamer Redragon Kumara Pro RGB</h3>
+    <a href="https://amzn.to/44p3ROq" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="fones">
+    <img src="https://m.media-amazon.com/images/I/519bjoeFBTL._AC_SL1000_.jpg" alt="Fone de Ouvido Sem Fio Philips TWS Bluetooth Preto">
+    <h3>Fone Philips Sem Fio TWS - 24h Bateria - Preto</h3>
+    <a href="https://amzn.to/4lgeiJO" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
+
+<div class="product-card" data-category="carregadores">
+    <img src="https://m.media-amazon.com/images/I/51mZInHcNxL._AC_SL1200_.jpg" alt="Carregador Turbo 40W para iPhone e iPad com Carga Rápida PD">
+    <h3>Carregador Turbo 40W para iPhone e iPad - Carga Rápida PD</h3>
+    <a href="https://amzn.to/4ecQpQY" target="_blank" class="btn-secondary">Ver na Amazon</a>
+</div>
                 </div>
             </div>
         </section>
         
+        <!-- Formulário de Contato -->
         <section id="contato-section" class="contact-form-section">
             <div class="container">
                 <h2>Receba Ofertas Exclusivas</h2>
                 <div class="contact-form">
                     <p>Cadastre seu e-mail para receber as melhores promoções da CyberStore direto na sua caixa de entrada!</p>
-                    <form id="email-signup-form">
-                        <div class="form-group">
-                            <label for="name">Nome (opcional):</label>
-                            <input type="text" id="name" name="name" placeholder="Seu nome">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail (obrigatório):</label>
-                            <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="accept-promotions" name="accept-promotions" required>
-                            <label for="accept-promotions">Concordo em receber promoções exclusivas.</label>
-                        </div>
-                        <button type="submit" class="btn-primary">Cadastrar E-mail</button>
-                    </form>
-                    <div id="confirmation-message"></div>
+                    <a href="https://forms.gle/pRosj4Wz8uyVUXyh8" target="_blank" class="btn-secondary">Cadastrar E-mail</a>
                 </div>
             </div>
         </section>
@@ -1038,818 +216,9 @@
     <footer>
         <div class="container">
             <p>&copy; CyberStore - Todos os direitos reservados.</p>
-            <div style="display: flex; gap: 12px; justify-content: center;">
-                <a href="#" id="db-access" class="hidden-db-link" title="Acesso ao Banco de Dados">Cyber</a>
-                <a href="#" id="product-admin" class="hidden-db-link" title="Administrar Produtos">Store</a>
-            </div>
         </div>
     </footer>
 
-    <section id="db-page">
-        <div class="container">
-            <h2>E-mails Cadastrados</h2>
-            <div id="password-form-container">
-                <p>Por favor, digite a senha para acessar.</p>
-                <form id="db-password-form">
-                    <div class="form-group">
-                        <label for="db-password">Senha:</label>
-                        <input type="password" id="db-password" name="password" required>
-                    </div>
-                    <button type="submit" class="btn-primary">Acessar</button>
-                </form>
-                <p id="db-error-message"></p>
-            </div>
-            
-            <div id="db-table-container">
-                <table id="db-table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <button class="btn-primary" id="db-back-button" style="margin-top: 30px;">Voltar</button>
-        </div>
-    </section>
-
-    <section id="product-admin-page">
-        <div class="container">
-            <h2>Administração de Produtos</h2>
-            
-            <div id="product-password-form-container" style="background-color: #f8f8f8; padding: 30px; border-radius: var(--border-radius); box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2); max-width: 400px; margin: 0 auto 30px;">
-                <p>Por favor, digite a senha para acessar.</p>
-                <form id="product-password-form">
-                    <div class="form-group">
-                        <label for="product-password">Senha:</label>
-                        <input type="password" id="product-password" name="password" required>
-                    </div>
-                    <button type="submit" class="btn-primary">Acessar</button>
-                </form>
-                <p id="product-error-message" style="color: #ff4d4d; margin-top: 10px; font-weight: bold; display: none; text-align: center;"></p>
-            </div>
-            
-            <div id="product-admin-container" style="display: none;">
-                <form id="add-product-form">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Adicionar Novo Produto</h3>
-                    
-                    <div class="form-group">
-                        <label for="product-name">Nome do Produto:</label>
-                        <input type="text" id="product-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="product-category">Categoria:</label>
-                        <select id="product-category" required>
-                            <option value="">Selecione...</option>
-                            <option value="fones">Fones de Ouvido</option>
-                            <option value="smartwatches">Smartwatches</option>
-                            <option value="carregadores">Carregadores</option>
-                            <option value="fotografia">Fotografia</option>
-                            <option value="perifericos">Periféricos</option>
-                            <option value="redes">Redes de Computadores</option>
-                        </select>
-                    </div>
-                    
-                    <div class="feature-checkboxes">
-                        <div class="feature-checkbox">
-                            <input type="checkbox" id="featured-product">
-                            <label for="featured-product">Destaque da Semana</label>
-                        </div>
-                        <div class="feature-checkbox">
-                            <input type="checkbox" id="promo-product">
-                            <label for="promo-product">Promoção Relâmpago</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="product-image-url">URL da Imagem do Produto:</label>
-                        <input type="url" id="product-image-url" required placeholder="https://exemplo.com/imagem.jpg">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="product-link">Link Afiliado Amazon:</label>
-                        <input type="url" id="product-link" required placeholder="https://amzn.to/...">
-                    </div>
-                    
-                    <button type="submit" class="btn-primary">Adicionar Produto</button>
-                    <div id="product-message"></div>
-                </form>
-                
-                <div id="product-list-container">
-                    <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Produtos Cadastrados</h3>
-                    <table id="product-list">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Categoria</th>
-                                <th>Destaque</th>
-                                <th>Promoção</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Produtos serão carregados aqui -->
-                        </tbody>
-                    </table>
-                </div>
-                
-                <button class="btn-primary" id="product-back-button" style="margin: 30px auto 0; display: block;">Voltar para o Site</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal de Edição de Produto -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeEditModal()">&times;</span>
-            <h3 style="text-align: center; margin-bottom: 20px; color: var(--secondary-color);">Editar Produto</h3>
-            <form id="edit-product-form">
-                <input type="hidden" id="edit-product-id">
-                
-                <div class="form-group">
-                    <label for="edit-product-name">Nome do Produto:</label>
-                    <input type="text" id="edit-product-name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="edit-product-category">Categoria:</label>
-                    <select id="edit-product-category" required>
-                        <option value="">Selecione...</option>
-                        <option value="fones">Fones de Ouvido</option>
-                        <option value="smartwatches">Smartwatches</option>
-                        <option value="carregadores">Carregadores</option>
-                        <option value="fotografia">Fotografia</option>
-                        <option value="perifericos">Periféricos</option>
-                        <option value="redes">Redes de Computadores</option>
-                    </select>
-                </div>
-                
-                <div class="feature-checkboxes">
-                    <div class="feature-checkbox">
-                        <input type="checkbox" id="edit-featured-product">
-                        <label for="edit-featured-product">Destaque da Semana</label>
-                    </div>
-                    <div class="feature-checkbox">
-                        <input type="checkbox" id="edit-promo-product">
-                        <label for="edit-promo-product">Promoção Relâmpago</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="edit-product-image-url">URL da Imagem do Produto:</label>
-                    <input type="url" id="edit-product-image-url" required placeholder="https://exemplo.com/imagem.jpg">
-                </div>
-                
-                <div class="form-group">
-                    <label for="edit-product-link">Link Afiliado Amazon:</label>
-                    <input type="url" id="edit-product-link" required placeholder="https://amzn.to/...">
-                </div>
-                
-                <button type="submit" class="btn-primary">Salvar Alterações</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Navegação e Menu Hamburguer
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const navList = document.querySelector('.nav-list');
-
-            hamburgerMenu.addEventListener('click', () => {
-                navList.classList.toggle('active');
-                hamburgerMenu.classList.toggle('open');
-            });
-
-            navList.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth <= 768) {
-                        navList.classList.remove('active');
-                        hamburgerMenu.classList.remove('open');
-                    }
-                });
-            });
-
-            // Configuração do Carrossel
-            const carouselImages = [
-                'imagens/1.png',
-                'imagens/2.png',
-                'imagens/3.png',
-                'imagens/4.png',
-                'imagens/5.png'
-            ];
-
-            const carouselInner = document.getElementById('carouselInner');
-            
-            // Adiciona as imagens ao carrossel
-            carouselImages.forEach(img => {
-                const slide = document.createElement('div');
-                slide.className = 'carousel-item';
-                
-                const imgElement = document.createElement('img');
-                imgElement.src = img;
-                imgElement.alt = 'CyberStore Promoção';
-                imgElement.className = 'carousel-img';
-                
-                slide.appendChild(imgElement);
-                carouselInner.appendChild(slide);
-            });
-
-            // Configura o autoplay
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.carousel-item');
-            
-            function showSlide(index) {
-                carouselInner.style.transform = `translateX(-${index * 100}%)`;
-            }
-            
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                showSlide(currentSlide);
-            }
-            
-            // Inicia o carrossel
-            showSlide(0);
-            setInterval(nextSlide, 5000);
-
-            // Verifica se as imagens carregaram corretamente
-            carouselImages.forEach(img => {
-                const testImage = new Image();
-                testImage.src = img;
-                testImage.onerror = () => {
-                    console.error(`Erro ao carregar imagem: ${img}`);
-                };
-            });
-
-            // Configuração do IndexedDB
-            const dbName = "CyberStoreDB";
-            const dbVersion = 5;
-            
-            let db;
-            const request = indexedDB.open(dbName, dbVersion);
-            
-            request.onupgradeneeded = (event) => {
-                const db = event.target.result;
-                
-                if (!db.objectStoreNames.contains('emails')) {
-                    db.createObjectStore("emails", { keyPath: "email" });
-                }
-                
-                if (!db.objectStoreNames.contains('products')) {
-                    const store = db.createObjectStore("products", { keyPath: "id", autoIncrement: true });
-                    store.createIndex("category", "category", { unique: false });
-                    store.createIndex("isFeatured", "isFeatured", { unique: false });
-                    store.createIndex("isPromo", "isPromo", { unique: false });
-                }
-
-                if (!db.objectStoreNames.contains('carouselImages')) {
-                    db.createObjectStore("carouselImages", { keyPath: "id", autoIncrement: true });
-                }
-            };
-            
-            request.onsuccess = (event) => {
-                db = event.target.result;
-                console.log("Banco de dados aberto com sucesso");
-                loadInitialProducts();
-            };
-            
-            request.onerror = (event) => {
-                console.error("Erro ao abrir o banco de dados:", event.target.error);
-            };
-
-            // Funções para manipulação de produtos
-            function addProduct(product, callback) {
-                const transaction = db.transaction(["products"], "readwrite");
-                const store = transaction.objectStore("products");
-                
-                const request = store.add(product);
-                
-                request.onsuccess = () => {
-                    console.log("Produto adicionado com sucesso");
-                    if (callback) callback();
-                };
-                
-                request.onerror = (event) => {
-                    console.error("Erro ao adicionar produto:", event.target.error);
-                };
-            }
-            
-            function updateProduct(product, callback) {
-                const transaction = db.transaction(["products"], "readwrite");
-                const store = transaction.objectStore("products");
-                
-                const request = store.put(product);
-                
-                request.onsuccess = () => {
-                    console.log("Produto atualizado com sucesso");
-                    if (callback) callback();
-                };
-                
-                request.onerror = (event) => {
-                    console.error("Erro ao atualizar produto:", event.target.error);
-                };
-            }
-            
-            function getProduct(id, callback) {
-                const transaction = db.transaction(["products"], "readonly");
-                const store = transaction.objectStore("products");
-                
-                const request = store.get(id);
-                
-                request.onsuccess = () => {
-                    callback(request.result);
-                };
-                
-                request.onerror = (event) => {
-                    console.error("Erro ao obter produto:", event.target.error);
-                };
-            }
-            
-            function getAllProducts(callback) {
-                const transaction = db.transaction(["products"], "readonly");
-                const store = transaction.objectStore("products");
-                
-                const request = store.getAll();
-                
-                request.onsuccess = () => {
-                    callback(request.result);
-                };
-                
-                request.onerror = (event) => {
-                    console.error("Erro ao obter produtos:", event.target.error);
-                };
-            }
-            
-            function deleteProduct(id, callback) {
-                const transaction = db.transaction(["products"], "readwrite");
-                const store = transaction.objectStore("products");
-                
-                const request = store.delete(id);
-                
-                request.onsuccess = () => {
-                    console.log("Produto deletado com sucesso");
-                    if (callback) callback();
-                };
-                
-                request.onerror = (event) => {
-                    console.error("Erro ao deletar produto:", event.target.error);
-                };
-            }
-
-            // Carregar produtos iniciais
-            function loadInitialProducts() {
-                getAllProducts((products) => {
-                    if (products.length === 0) {
-                        // Se não houver produtos, podemos adicionar alguns exemplos
-                        const defaultProducts = [
-                        ];
-
-                        defaultProducts.forEach(product => {
-                            addProduct(product);
-                        });
-                    }
-                    
-                    renderProducts();
-                    renderHighlightProducts();
-                    renderPromoProducts();
-                });
-            }
-
-            // Função para limitar texto com ellipsis
-            function limitText(text, maxLength) {
-                if (text.length > maxLength) {
-                    return text.substring(0, maxLength) + '...';
-                }
-                return text;
-            }
-
-            // Renderização de produtos
-            const productGrid = document.getElementById('productGrid');
-            const highlightGrid = document.getElementById('highlightGrid');
-            const promoGrid = document.getElementById('promoGrid');
-            const categoryButtons = document.querySelectorAll('.category-btn');
-
-            function renderProducts(filterCategory = 'all') {
-                getAllProducts((products) => {
-                    productGrid.innerHTML = '';
-                    
-                    const filteredProducts = products.filter(p => 
-                        (filterCategory === 'all' || p.category === filterCategory)
-                    );
-                    
-                    if (filteredProducts.length === 0) {
-                        productGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhum produto encontrado nesta categoria.</p>';
-                        return;
-                    }
-                    
-                    filteredProducts.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.classList.add('product-card');
-                        productCard.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}">
-                            <h3>${limitText(product.name, 30)}</h3>
-                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                        `;
-                        productGrid.appendChild(productCard);
-                    });
-                });
-            }
-
-            function renderHighlightProducts() {
-                getAllProducts((products) => {
-                    highlightGrid.innerHTML = '';
-                    const highlightProducts = products.filter(p => p.isFeatured);
-                    
-                    if (highlightProducts.length === 0) {
-                        highlightGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhum destaque esta semana.</p>';
-                        return;
-                    }
-                    
-                    highlightProducts.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.classList.add('product-card');
-                        productCard.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}">
-                            <h3>${limitText(product.name, 30)}</h3>
-                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Ver na Amazon</a>
-                        `;
-                        highlightGrid.appendChild(productCard);
-                    });
-                });
-            }
-
-            function renderPromoProducts() {
-                getAllProducts((products) => {
-                    promoGrid.innerHTML = '';
-                    const promoProducts = products.filter(p => p.isPromo);
-                    
-                    if (promoProducts.length === 0) {
-                        promoGrid.innerHTML = '<p style="text-align: center; color: var(--secondary-color);">Nenhuma promoção no momento.</p>';
-                        return;
-                    }
-                    
-                    promoProducts.forEach(product => {
-                        const promoItem = document.createElement('div');
-                        promoItem.classList.add('promo-item');
-                        const countdownId = `countdown-${product.id}`;
-                        promoItem.innerHTML = `
-                            <img src="${product.image}" alt="${product.name}">
-                            <p>${limitText(product.name, 30)}</p>
-                            <div class="countdown" id="${countdownId}">Termina em: <span>24h 00m 00s</span></div>
-                            <a href="${product.amazonLink}" target="_blank" class="btn-secondary">Aproveitar</a>
-                        `;
-                        promoGrid.appendChild(promoItem);
-                        
-                        // Iniciar contagem regressiva para este produto
-                        startCountdown(countdownId, 24, 0, 0);
-                    });
-                });
-            }
-
-            // Countdown para Promoções
-            function startCountdown(elementId, hours, minutes, seconds) {
-                let totalSeconds = hours * 3600 + minutes * 60 + seconds;
-                const countdownElement = document.getElementById(elementId);
-                const countdownSpan = countdownElement.querySelector('span');
-
-                const interval = setInterval(() => {
-                    if (totalSeconds <= 0) {
-                        clearInterval(interval);
-                        countdownSpan.textContent = 'ENCERRADO!';
-                        return;
-                    }
-
-                    const h = Math.floor(totalSeconds / 3600);
-                    const m = Math.floor((totalSeconds % 3600) / 60);
-                    const s = totalSeconds % 60;
-
-                    countdownSpan.textContent =
-                        `${h.toString().padStart(2, '0')}h ` +
-                        `${m.toString().padStart(2, '0')}m ` +
-                        `${s.toString().padStart(2, '0')}s`;
-
-                    totalSeconds--;
-                }, 1000);
-            }
-
-            // Adiciona evento de clique para os botões de categoria
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const category = button.dataset.category;
-                    renderProducts(category);
-                });
-            });
-
-            // Captação de E-mails
-            const emailSignupForm = document.getElementById('email-signup-form');
-            const confirmationMessage = document.getElementById('confirmation-message');
-
-            emailSignupForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const acceptPromotions = document.getElementById('accept-promotions').checked;
-
-                if (acceptPromotions) {
-                    let emails = JSON.parse(localStorage.getItem('cyberstoreEmails')) || [];
-
-                    const emailExists = emails.some(user => user.email === email);
-                    if (emailExists) {
-                        confirmationMessage.style.display = 'block';
-                        confirmationMessage.style.backgroundColor = '#ffc107';
-                        confirmationMessage.textContent = 'Este e-mail já está cadastrado!';
-                        setTimeout(() => confirmationMessage.style.display = 'none', 3000);
-                        return;
-                    }
-
-                    emails.push({ name: name || 'N/A', email: email, timestamp: new Date().toISOString() });
-                    localStorage.setItem('cyberstoreEmails', JSON.stringify(emails));
-
-                    confirmationMessage.style.display = 'block';
-                    confirmationMessage.style.backgroundColor = '#28a745';
-                    confirmationMessage.textContent = 'E-mail cadastrado com sucesso! Em breve, ofertas exclusivas.';
-                    emailSignupForm.reset();
-                    setTimeout(() => confirmationMessage.style.display = 'none', 3000);
-                } else {
-                    confirmationMessage.style.display = 'block';
-                    confirmationMessage.style.backgroundColor = '#dc3545';
-                    confirmationMessage.textContent = 'Você deve aceitar receber promoções para se cadastrar.';
-                    setTimeout(() => confirmationMessage.style.display = 'none', 3000);
-                }
-            });
-
-            // Banco de Dados Oculto
-            const dbAccessLink = document.getElementById('db-access');
-            const dbPage = document.getElementById('db-page');
-            const mainContent = document.querySelector('main');
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            const dbTableBody = document.querySelector('#db-table tbody');
-            const dbErrorMessage = document.getElementById('db-error-message');
-            const passwordFormContainer = document.getElementById('password-form-container');
-            const dbPasswordForm = document.getElementById('db-password-form');
-            const dbPasswordInput = document.getElementById('db-password');
-            const dbTableContainer = document.getElementById('db-table-container');
-            const dbBackButton = document.getElementById('db-back-button');
-
-            const correctPassword = "Lima@321";
-
-            dbAccessLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                mainContent.style.display = 'none';
-                header.style.display = 'none';
-                footer.style.display = 'none';
-                dbPage.style.display = 'block';
-                passwordFormContainer.style.display = 'block';
-                dbTableContainer.style.display = 'none';
-                dbErrorMessage.style.display = 'none';
-                dbPasswordInput.value = '';
-            });
-
-            dbPasswordForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const enteredPassword = dbPasswordInput.value;
-
-                if (enteredPassword === correctPassword) {
-                    passwordFormContainer.style.display = 'none';
-                    dbTableContainer.style.display = 'block';
-                    loadEmailsToTable();
-                } else {
-                    dbErrorMessage.textContent = 'Senha incorreta. Tente novamente.';
-                    dbErrorMessage.style.display = 'block';
-                    dbPasswordInput.value = '';
-                    setTimeout(() => dbErrorMessage.style.display = 'none', 3000);
-                }
-            });
-
-            dbBackButton.addEventListener('click', () => {
-                dbPage.style.display = 'none';
-                mainContent.style.display = 'block';
-                header.style.display = 'block';
-                footer.style.display = 'block';
-            });
-
-            function loadEmailsToTable() {
-                dbTableBody.innerHTML = '';
-                const emails = JSON.parse(localStorage.getItem('cyberstoreEmails')) || [];
-
-                if (emails.length === 0) {
-                    const row = dbTableBody.insertRow();
-                    const cell = row.insertCell();
-                    cell.colSpan = 2;
-                    cell.textContent = "Nenhum e-mail cadastrado ainda.";
-                    cell.style.textAlign = 'center';
-                    cell.style.fontStyle = 'italic';
-                } else {
-                    emails.forEach(user => {
-                        const row = dbTableBody.insertRow();
-                        const nameCell = row.insertCell();
-                        const emailCell = row.insertCell();
-                        nameCell.textContent = user.name;
-                        emailCell.textContent = user.email;
-                    });
-                }
-            }
-
-            // Administração de Produtos
-            const productAdminLink = document.getElementById('product-admin');
-            const productAdminPage = document.getElementById('product-admin-page');
-            const productPasswordForm = document.getElementById('product-password-form');
-            const productPasswordInput = document.getElementById('product-password');
-            const productErrorMessage = document.getElementById('product-error-message');
-            const productAdminContainer = document.getElementById('product-admin-container');
-            const addProductForm = document.getElementById('add-product-form');
-            const productList = document.getElementById('product-list');
-            const productBackButton = document.getElementById('product-back-button');
-            const productMessage = document.getElementById('product-message');
-            const editModal = document.getElementById('editModal');
-            const editProductForm = document.getElementById('edit-product-form');
-
-            productAdminLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                mainContent.style.display = 'none';
-                header.style.display = 'none';
-                footer.style.display = 'none';
-                productAdminPage.style.display = 'block';
-                productAdminContainer.style.display = 'none';
-                productPasswordForm.style.display = 'block';
-                productErrorMessage.style.display = 'none';
-                productPasswordInput.value = '';
-            });
-
-            productPasswordForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const enteredPassword = productPasswordInput.value;
-
-                if (enteredPassword === correctPassword) {
-                    productPasswordForm.style.display = 'none';
-                    productAdminContainer.style.display = 'block';
-                    loadProductsToAdmin();
-                } else {
-                    productErrorMessage.textContent = 'Senha incorreta. Tente novamente.';
-                    productErrorMessage.style.display = 'block';
-                    productPasswordInput.value = '';
-                    setTimeout(() => productErrorMessage.style.display = 'none', 3000);
-                }
-            });
-
-            productBackButton.addEventListener('click', () => {
-                productAdminPage.style.display = 'none';
-                mainContent.style.display = 'block';
-                header.style.display = 'block';
-                footer.style.display = 'block';
-            });
-
-            addProductForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const product = {
-                    name: document.getElementById('product-name').value,
-                    category: document.getElementById('product-category').value,
-                    isFeatured: document.getElementById('featured-product').checked,
-                    isPromo: document.getElementById('promo-product').checked,
-                    image: document.getElementById('product-image-url').value,
-                    amazonLink: document.getElementById('product-link').value
-                };
-                
-                addProduct(product, () => {
-                    addProductForm.reset();
-                    
-                    productMessage.textContent = "Produto adicionado com sucesso!";
-                    productMessage.style.display = "block";
-                    productMessage.style.backgroundColor = "#28a745";
-                    productMessage.style.color = "white";
-                    
-                    loadProductsToAdmin();
-                    renderProducts();
-                    renderHighlightProducts();
-                    renderPromoProducts();
-                    
-                    setTimeout(() => {
-                        productMessage.style.display = "none";
-                    }, 3000);
-                });
-            });
-
-            function loadProductsToAdmin() {
-                getAllProducts((products) => {
-                    productList.innerHTML = '';
-                    
-                    if (products.length === 0) {
-                        productList.innerHTML = `
-                            <tr>
-                                <td colspan="5" style="text-align: center; padding: 20px; font-style: italic;">
-                                    Nenhum produto cadastrado ainda.
-                                </td>
-                            </tr>
-                        `;
-                        return;
-                    }
-                    
-                    products.forEach(product => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${limitText(product.name, 30)}</td>
-                            <td>${getCategoryName(product.category)}</td>
-                            <td>${product.isFeatured ? 'Sim' : 'Não'}</td>
-                            <td>${product.isPromo ? 'Sim' : 'Não'}</td>
-                            <td>
-                                <button class="edit-btn" onclick="openEditModal(${product.id})">Editar</button>
-                                <button class="btn-secondary" style="padding: 5px 10px; font-size: 0.9em;" onclick="deleteProductFromList(${product.id})">Excluir</button>
-                            </td>
-                        `;
-                        productList.appendChild(tr);
-                    });
-                });
-            }
-
-            function getCategoryName(categoryKey) {
-                const categories = {
-                    'fones': 'Fones de Ouvido',
-                    'smartwatches': 'Smartwatches',
-                    'carregadores': 'Carregadores',
-                    'fotografia': 'Fotografia',
-                    'perifericos': 'Periféricos',
-                    'redes': 'Redes de Computadores'
-                };
-                return categories[categoryKey] || categoryKey;
-            }
-
-            window.openEditModal = function(id) {
-                getProduct(id, (product) => {
-                    document.getElementById('edit-product-id').value = product.id;
-                    document.getElementById('edit-product-name').value = product.name;
-                    document.getElementById('edit-product-category').value = product.category;
-                    document.getElementById('edit-featured-product').checked = product.isFeatured;
-                    document.getElementById('edit-promo-product').checked = product.isPromo;
-                    document.getElementById('edit-product-image-url').value = product.image;
-                    document.getElementById('edit-product-link').value = product.amazonLink;
-                    
-                    editModal.style.display = 'block';
-                });
-            };
-
-            window.closeEditModal = function() {
-                editModal.style.display = 'none';
-            };
-
-            editProductForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const product = {
-                    id: parseInt(document.getElementById('edit-product-id').value),
-                    name: document.getElementById('edit-product-name').value,
-                    category: document.getElementById('edit-product-category').value,
-                    isFeatured: document.getElementById('edit-featured-product').checked,
-                    isPromo: document.getElementById('edit-promo-product').checked,
-                    image: document.getElementById('edit-product-image-url').value,
-                    amazonLink: document.getElementById('edit-product-link').value
-                };
-                
-                updateProduct(product, () => {
-                    closeEditModal();
-                    
-                    productMessage.textContent = "Produto atualizado com sucesso!";
-                    productMessage.style.display = "block";
-                    productMessage.style.backgroundColor = "#28a745";
-                    productMessage.style.color = "white";
-                    
-                    loadProductsToAdmin();
-                    renderProducts();
-                    renderHighlightProducts();
-                    renderPromoProducts();
-                    
-                    setTimeout(() => {
-                        productMessage.style.display = "none";
-                    }, 3000);
-                });
-            });
-
-            window.deleteProductFromList = function(id) {
-                if (confirm("Tem certeza que deseja excluir este produto?")) {
-                    deleteProduct(id, () => {
-                        loadProductsToAdmin();
-                        renderProducts();
-                        renderHighlightProducts();
-                        renderPromoProducts();
-                    });
-                }
-            };
-
-            // Fechar o modal ao clicar fora dele
-            window.addEventListener('click', (e) => {
-                if (e.target === editModal) {
-                    closeEditModal();
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
